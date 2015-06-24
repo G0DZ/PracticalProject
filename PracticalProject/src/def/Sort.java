@@ -11,6 +11,7 @@ public class Sort {
 	// 1. Кнопки
 	JButton button_input;
 	JButton button_start_sort;
+	JButton button_make_step;
 	JButton button_check;
 	JButton button_save;
 	JButton button_revival;
@@ -42,6 +43,7 @@ public class Sort {
         // Создаем кнопочки (с помощью конструктора им можно задать имя)
     	button_input = new JButton("Ввод исходных данных");
     	button_start_sort = new JButton("Запуск сортировки");
+    	button_make_step = new JButton("Шаг");
     	button_check = new JButton("Проверка");
     	button_save = new JButton("Сохранение");
     	button_revival = new JButton("Восстановление");
@@ -49,16 +51,52 @@ public class Sort {
     	
     	// Создаем панель p1
     	p1 = new JPanel();
+    	
     	// Говорим, что этой панелью будет управлять GridLayout с таблице1 2*3
-    	GridLayout gl =new GridLayout(2,3);
-    	p1.setLayout(gl);
-
+    	//GridLayout gl =new GridLayout(2,3);
+    	//p1.setLayout(gl);
+    	
+    	// Говорим, что этой панелью будет управлять GroupLayout
+    	GroupLayout grl = new GroupLayout(p1);
+    	p1.setLayout(grl);
+    	
+    	// Automatic gap insertion:
+    	grl.setAutoCreateGaps(true);
+    	grl.setAutoCreateContainerGaps(true);
+    	
+    	grl.setHorizontalGroup(
+    			grl.createSequentialGroup()
+    			      .addComponent(button_input)
+    			      .addComponent(button_start_sort)
+    			      .addComponent(button_make_step)
+    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.LEADING)
+    			           .addComponent(button_check)
+    			           .addComponent(button_save)
+    			           .addComponent(button_revival))
+    			);
+    	grl.setVerticalGroup(
+    			grl.createSequentialGroup()
+    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.BASELINE)
+    			           .addComponent(button_input)
+    			           .addComponent(button_start_sort)
+    			           .addComponent(button_make_step)
+    			           .addComponent(button_check))
+    			      .addComponent(button_save)
+    			      .addComponent(button_revival)
+    			);
+    	
+    	
+    	
+    	
+    	
+    	
+    	/*
     	// Добавляем кнопочки на панель p1
     	p1.add(button_input);
 		p1.add(button_start_sort);
 		p1.add(button_check);
 		p1.add(button_save);
-		p1.add(button_revival);
+		p1.add(button_revival);*/
  
 		/*  
 		// Тут подключаем движок
@@ -78,7 +116,8 @@ public class Sort {
 
 	    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
         frame.pack(); 
-
+        // Запрет на изменение размера экрана
+        frame.setResizable(false);
 		// Отображаю окно 
 		frame.setVisible(true);
      }
