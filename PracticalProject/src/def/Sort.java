@@ -52,11 +52,7 @@ public class Sort {
     	// Создаем панель p1
     	p1 = new JPanel();
     	
-    	// Говорим, что этой панелью будет управлять GridLayout с таблице1 2*3
-    	//GridLayout gl =new GridLayout(2,3);
-    	//p1.setLayout(gl);
-    	
-    	// Говорим, что этой панелью будет управлять GroupLayout
+     	// Говорим, что этой панелью будет управлять GroupLayout
     	GroupLayout grl = new GroupLayout(p1);
     	p1.setLayout(grl);
     	
@@ -66,37 +62,28 @@ public class Sort {
     	
     	grl.setHorizontalGroup(
     			grl.createSequentialGroup()
-    			      .addComponent(button_input)
-    			      .addComponent(button_start_sort)
-    			      .addComponent(button_make_step)
-    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.LEADING)
-    			           .addComponent(button_check)
-    			           .addComponent(button_save)
-    			           .addComponent(button_revival))
+    			      .addComponent(button_input, 180, 180, 180)
+    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
+    			    		.addComponent(button_start_sort, 180, 180, 180)
+    	    			    .addComponent(button_make_step, 180, 180, 180))
+    			   	  .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
+    			           .addComponent(button_check, 180, 180, 180)
+    			           .addComponent(button_save, 180, 180, 180)
+    			           .addComponent(button_revival, 180, 180, 180))
     			);
     	grl.setVerticalGroup(
     			grl.createSequentialGroup()
-    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.BASELINE)
-    			           .addComponent(button_input)
-    			           .addComponent(button_start_sort)
-    			           .addComponent(button_make_step)
-    			           .addComponent(button_check))
-    			      .addComponent(button_save)
-    			      .addComponent(button_revival)
+    				  .addGroup(grl.createParallelGroup(GroupLayout.Alignment.LEADING)     
+    					   .addComponent(button_input, 30, 30, 30)
+    					   .addComponent(button_start_sort, 30, 30, 30)
+    					   .addComponent(button_check, 30, 30, 30)
+    			           )
+    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.LEADING)  
+    			           .addComponent(button_make_step, 30, 30, 30)
+    			           .addComponent(button_save, 30, 30, 30))    			      
+    			      .addComponent(button_revival, 30, 30, 30)
     			);
     	
-    	
-    	
-    	
-    	
-    	
-    	/*
-    	// Добавляем кнопочки на панель p1
-    	p1.add(button_input);
-		p1.add(button_start_sort);
-		p1.add(button_check);
-		p1.add(button_save);
-		p1.add(button_revival);*/
  
 		/*  
 		// Тут подключаем движок
