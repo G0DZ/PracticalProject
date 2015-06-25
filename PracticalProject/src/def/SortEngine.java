@@ -18,14 +18,14 @@ public class SortEngine implements ActionListener {
     	dataEngine = new Data();
     }
        	   
-    public boolean readArray(String fileName) {
+    public boolean readArray(String fileName, int real_length) {
     	
     	try {
 	    	Scanner in = new Scanner(new File(fileName));
-			int i = 0;
+	    	real_length = 0;
 			while(in.hasNextInt()){
-				i++;
-				dataEngine.array[i] = in.nextInt();		
+				dataEngine.array[real_length] = in.nextInt();	
+				real_length++;
 			}
 			in.close();	
 	    	return true;
@@ -42,41 +42,21 @@ public class SortEngine implements ActionListener {
     	// Если это кнопка "Ввод исходных данных"
     	if (clickedButton.getActionCommand() == "Ввод исходных данных") {
     		// Считать исходные данные в массив array[];
-    		boolean inforWasRead = readArray("input1.txt");		
+    		int real_length = 0;
+    		boolean inforWasRead = readArray("input1.txt", real_length);		
     		
-    		if (inforWasRead) {
-    			//parent.setDisplayValue("Массив считан успешно!"); 
+    		if (inforWasRead) { 
     			AlgorithmOfSort.insertionSort(dataEngine.array);
-    			
-    			
+    			    			
     			parent.vpanel.PanelArray = new int[dataEngine.array.length];
     			for (int i = 0; i < dataEngine.array.length; i++) {
     				parent.vpanel.PanelArray[i] = dataEngine.array[i];
     			}
     			parent.vpanel.repaint();
-    			    			
-    			
-    			//for (int i = 0; i < dataEngine.array.length; i++) {
-    			//	String dispFieldText = parent.getDisplayValue();
-    			//	parent.setDisplayValue(dispFieldText+dataEngine.array[i]+" ");
-    			//}
-    			
-    			//выделить память под PanelArray
-    			//в цикле присвоить значение элементов
-    			//вызвать метод repaint
-    			
-    			
-    			/*for (int i:parent.vpanel.PanelArray) {
-    				parent.vpanel.PanelArray[i] = i;
-    			}*/
-    			//parent.vpanel.repaint();
     		}
     		else {
     			parent.setDisplayValue("Файл не найден!");
     		}
-    		// Считываем, что у нас есть в displayField - объект класса JTextField
-    		//String dispFieldText = parent.getDisplayValue();
-    		//String clickedButtonLabel = clickedButton.getText();
     	}
     } 
     
