@@ -17,33 +17,33 @@ public class VisPanel extends JPanel
 	
 	public VisPanel() 
 	{
-		PanelArray = new int[10];
-		PanelArray[0] = -1;
 		setOpaque(true);
 	}
 
 	protected void paintComponent(Graphics g) 
 	{
 		super.paintComponent(g);
-		WidthCoef = 1000/PanelArray.length;
-	    if (WidthCoef > 1) 
-	    	HeigthCoef=WidthCoef-WidthCoef/3; 
-	    else 
-	    	HeigthCoef=WidthCoef=1;
-	    
-	    Graphics2D g2d = (Graphics2D) g;
-	    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	    // drawing axis
-	    g2d.setPaint(Color.ORANGE);
-	    // drawing finction
-	    int max=PanelArray[0];   //начальное условие для поиска максимального элемента в массиве (чтобы определить масштаб)
-	    for(int i = 1;i < PanelArray.length; i++)
-	        if(PanelArray[i] > max)
-	        	max = PanelArray[i]; //поиск максимального элемента
-	    int k=(getHeight()-5)/max; //вычисляем масштаб - высота сцены минус запас 5px и делим это все на максимальное значение
-	    
-	    for(int i=0;i<PanelArray.length;i++)
-	        g2d.drawRect(i*WidthCoef ,560,HeigthCoef,-k*PanelArray[i]); //рисуем прямоугольник
+		if(PanelArray != null)
+		{
+			WidthCoef = getWidth()/PanelArray.length;
+		    if (WidthCoef > 1) 
+		    	HeigthCoef=WidthCoef-WidthCoef/3; 
+		    else 
+		    	HeigthCoef=WidthCoef=1;
+		    
+		    Graphics2D g2d = (Graphics2D) g;
+		    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		    // drawing axis
+		    g2d.setPaint(Color.ORANGE);
+		    // drawing finction 
+		    int max=PanelArray[0];   //начальное условие для поиска максимального элемента в массиве (чтобы определить масштаб)
+		    for(int i = 1;i < PanelArray.length; i++)
+		        if(PanelArray[i] > max)
+		        	max = PanelArray[i]; //поиск максимального элемента
+		    int k=(getHeight()-5)/max; //вычисляем масштаб - высота сцены минус запас 5px и делим это все на максимальное значение
+		    for(int i=0;i<PanelArray.length;i++)
+		    	g2d.fillRect(i*WidthCoef,0,HeigthCoef,k*PanelArray[i]); //рисуем прямоугольник
+		}
     }
 
 }
