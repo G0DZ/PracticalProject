@@ -47,13 +47,12 @@ public class Sort {
         windowContent.add("Center",displayField);
         
         // Создаем кнопочки (с помощью конструктора им можно задать имя)
-    	button_input = new JButton("Ввод исходных данных");
-    	button_start_sort = new JButton("Запуск сортировки");
-    	button_make_step = new JButton("Шаг");
-    	button_check = new JButton("Проверка");
-    	button_save = new JButton("Сохранение");
-    	button_revival = new JButton("Восстановление");
-
+    	button_input = new JButton(data.b_input_txt);
+    	button_start_sort = new JButton(data.b_start_sort_txt);
+    	button_make_step = new JButton(data.b_make_step_txt);
+    	button_check = new JButton(data.b_check_txt);
+    	button_save = new JButton(data.b_save_txt);
+    	button_revival = new JButton(data.b_revival_txt);
     	
     	// Создаем панель p1
     	p1 = new JPanel();
@@ -103,15 +102,16 @@ public class Sort {
         
         
         // Создаем фрейм, задаем ему название и размещаем там нашу главную панель          
-		JFrame frame = new JFrame("Sort");
-	    frame.setContentPane(windowContent);
+		JFrame frameCore = new JFrame(data.f_Sort_txt);
+		frameCore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frameCore.setContentPane(windowContent);
 
 	    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
-        frame.pack(); 
+        frameCore.pack(); 
         // Запрет на изменение размера экрана
-        frame.setResizable(false);
+        frameCore.setResizable(false);
 		// Отображаю окно 
-		frame.setVisible(true);
+		frameCore.setVisible(true);
      }
     
 }
