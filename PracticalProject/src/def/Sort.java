@@ -110,6 +110,15 @@ public class Sort {
         frameCore.pack(); 
         // Запрет на изменение размера экрана
         frameCore.setResizable(false);
+        
+        //Точка размещения экрана
+        Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
+        int w = frameCore.getWidth();
+        int h = frameCore.getHeight();
+        center.x = center.x - w/2; 
+        center.y = center.y - h/2;
+        frameCore.setLocation(center);
+
 		// Отображаю окно 
 		frameCore.setVisible(true);
      }

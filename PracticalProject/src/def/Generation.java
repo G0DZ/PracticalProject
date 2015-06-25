@@ -12,10 +12,11 @@ public class Generation extends JPanel {
 	        super(new BorderLayout());
 
 	        //Create the radio buttons.
-	        JRadioButton radio_file = new JRadioButton(Data.rb_file_txt);
+	        JRadioButton radio_file = new JRadioButton(data.rb_file_txt);
 	        radio_file.setSelected(true);
-	        JRadioButton radio_string = new JRadioButton(Data.rb_string_txt);
-	        JRadioButton radio_auto = new JRadioButton(Data.rb_auto_txt);
+	        JRadioButton radio_string = new JRadioButton(data.rb_string_txt);
+	        JRadioButton radio_auto = new JRadioButton(data.rb_auto_txt);
+	        JButton button_opt_for = new JButton(data.b_opt_for_txt);
 
 	        //Group the radio buttons.
 	        ButtonGroup group = new ButtonGroup();
@@ -36,14 +37,16 @@ public class Generation extends JPanel {
 	        radioPanel.add(radio_auto);
 
 	        add(radioPanel, BorderLayout.NORTH);
+	        button_opt_for.setPreferredSize(new Dimension(15, 10));
+	        add(button_opt_for, BorderLayout.CENTER);
 	        paramPanel = new JPanel();
 	        add(paramPanel, BorderLayout.SOUTH);
 	        setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
-	    }
+	 	}
 
 	    public static void createAndShowGENERATION(Data data) {
 	        //Create and set up the window.
-	        JFrame frame = new JFrame(Data.f_Generation_txt);
+	        JFrame frame = new JFrame(data.f_Generation_txt);
 	        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	        //Create and set up the content pane.
@@ -55,6 +58,15 @@ public class Generation extends JPanel {
 	        frame.pack();
 	        // Запрет на изменение размера экрана
 	        frame.setResizable(false);
+	        
+	      //Точка размещения экрана
+	        Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
+	        int w = frame.getWidth();
+	        int h = frame.getHeight();
+	        center.x = center.x - w/2; 
+	        center.y = center.y - h/2;
+	        frame.setLocation(center);
+	        
 	        frame.setVisible(true);
 	    }	
 

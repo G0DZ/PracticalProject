@@ -39,6 +39,7 @@ public class GenerationEngine implements ActionListener {
     }*/
   
     public void actionPerformed(ActionEvent e) {
+    	
     	/*
     	// Получение источника события
     	JButton clickedButton =  (JButton) e.getSource();
