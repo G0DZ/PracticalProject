@@ -1,18 +1,11 @@
 package def;
 
-public class Data {
+public class Data 
+{
+	int[] array;	
 	
-	final static int sizeOfArray = 20;	
-	int[] array;
-	
-	Data() {
-		array = new int[sizeOfArray];
-	}
-	
-	public static void main(String[] args) {
-		
-		Data data =  new Data();
-		new Sort(data);		
+	Data() 
+	{
 		
 	}
 }

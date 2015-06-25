@@ -39,7 +39,7 @@ public class VisPanel extends JPanel
 		        	max = PanelArray[i]; //поиск максимального элемента
 		    int k=(getHeight()-5)/max; //вычисляем масштаб - высота сцены минус запас 5px и делим это все на максимальное значение
 		    for(int i=0;i<PanelArray.length;i++) {
-		    	g2d.fillRect(i*WidthCoef,0,HeigthCoef,k*PanelArray[i]); //рисуем прямоугольник
+		    	g2d.fillRect(i*WidthCoef,getHeight()-k*PanelArray[i],HeigthCoef,k*PanelArray[i]); //рисуем прямоугольник
 		    }
 		}
     }

@@ -15,7 +15,7 @@ public class SortEngine implements ActionListener {
     // Конструктор сохраняет ссылку к Sort window в переменной класса parent
     SortEngine(Sort parent, Data data){
     	this.parent = parent;
-    	dataEngine = new Data();
+    	dataEngine = data;
     }
        	   
     public boolean readArray(String fileName, int real_length) {
@@ -23,6 +23,8 @@ public class SortEngine implements ActionListener {
     	try {
 	    	Scanner in = new Scanner(new File(fileName));
 	    	real_length = 0;
+	    	int size =  in.nextInt();
+	    	dataEngine.array = new int[size];
 			while(in.hasNextInt()){
 				dataEngine.array[real_length] = in.nextInt();	
 				real_length++;
