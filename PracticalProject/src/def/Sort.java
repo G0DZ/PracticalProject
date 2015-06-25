@@ -83,16 +83,14 @@ public class Sort {
     			           .addComponent(button_save, 30, 30, 30))    			      
     			      .addComponent(button_revival, 30, 30, 30)
     			);
-    	
- 
-		/*  
+    	  
 		// Тут подключаем движок
-		CalculatorEngine calcEngine = new CalculatorEngine(this);
-  		button0.addActionListener(calcEngine);
-		button1.addActionListener(calcEngine);
-		button2.addActionListener(calcEngine);
-		button3.addActionListener(calcEngine);
-		button4.addActionListener(calcEngine);*/
+		SortEngine sEngine = new SortEngine(this);
+		button_input.addActionListener(sEngine);
+		button_start_sort.addActionListener(sEngine);
+		button_check.addActionListener(sEngine);
+		button_make_step.addActionListener(sEngine);
+		button_revival.addActionListener(sEngine);
 
 		// Размещаем панель p1 по центру экрана (главной панели)
         windowContent.add("Center",p1);
@@ -111,7 +109,9 @@ public class Sort {
   
 	public static void main(String[] args) {
 		
+		Data data =  new Data();
 		new Sort();
+		
 	}
 
 }
