@@ -1,6 +1,6 @@
 package def;
 
-public class SortAlgorithmsClass extends Thread 
+public class SortAlgorithms
 {
 	public static class InsertionSort extends Thread
 	{
