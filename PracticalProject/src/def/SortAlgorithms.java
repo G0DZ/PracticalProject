@@ -48,17 +48,17 @@ public class SortAlgorithms
 	    {
 			
 			parent.vpanel.repaint();
-			MergeSort(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1);
+			MergeSorting(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1);
 	    }
 		
-		void MergeSort(int[] arr, int l, int r)
+		void MergeSorting(int[] arr, int l, int r)
 		{
 		    //! Условие выхода из рекурсии
 		    if(l >= r) return;
 		    int m = (l + r)/2;
 		    //! Рекурсивная сортировка полученных массивов
-		    MergeSort(arr, l, m);
-		    MergeSort(arr, m+1, r);
+		    MergeSorting(arr, l, m);
+		    MergeSorting(arr, m+1, r);
 		    MergeS(arr, l, r, m);
 		}
 		
