@@ -2,7 +2,7 @@ package def;
 import javax.swing.*;
 import java.awt.*;
 
-public class Sort {
+public class Sort extends JFrame{
 
 	// Объявление компонент
 	JPanel windowContent;

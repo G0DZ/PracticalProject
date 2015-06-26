@@ -2,17 +2,18 @@ package def;
 
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent;
-
+import javax.swing.*;
+import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class SortEngine implements ActionListener {
+public class SortEngine extends JFrame implements ActionListener {
  
 	Sort parent; // ссылка на Sort
+	private Generation dialog = null; //сслыка, пока пустая, на объект дочернего окна
 	Data dataEngine;
 	
     // Конструктор сохраняет ссылку к Sort window в переменной класса parent
@@ -20,8 +21,22 @@ public class SortEngine implements ActionListener {
     	this.parent = parent;
     	dataEngine = data;
     }
-       	    
-    
+     /*  	    
+    // обработчик нажатия на кнопку, которая по логике должна вызывать дочернее окно
+    private void jButtonAddMouseClicked(MouseEvent evt) {
+    	 // создаём объект дочернего окна, передавая в конструктор this-ссылку - т.о., именно это окно становится для нового родительским
+        this.dialog = new Generation(this, dataEngine);
+        
+        /*  if (this.dialog.execute()) {
+        // действия при нажатии клавиши ОК
+        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
+        }
+        else {
+            // действия при нажатии на клавишу отмены	
+        }*/
+   // }*/
+
+ 
     
     public boolean readArray(String fileName, int real_length) {
     	
@@ -48,8 +63,12 @@ public class SortEngine implements ActionListener {
     	JButton clickedButton =  (JButton) e.getSource();
     	// Если это кнопка "Ввод исходных данных"
     	String actioncommand = clickedButton.getActionCommand();
-    	if (actioncommand == dataEngine.b_input_txt) 
-            Generation.createAndShowGENERATION(dataEngine);
+    	if (actioncommand == dataEngine.b_input_txt) {
+    	
+    		 this.dialog = new Generation(this, dataEngine); 	
+    	
+    	
+    	}
     	if(actioncommand == dataEngine.b_start_sort_txt)
     	{ //если это кнопка "Запуск сортировки"
     		int real_length = 0;
