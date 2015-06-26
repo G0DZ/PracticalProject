@@ -20,6 +20,7 @@ public class Data
 	String b_file_txt = "Файл";
 	String b_string_txt = "Строка ввода";
 	String b_auto_txt = "Автоматическая";
+	String b_OK_txt = "ОК";
 	String b_cancel_txt = "Отмена";
 	
 	Data() 

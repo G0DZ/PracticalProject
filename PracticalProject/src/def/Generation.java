@@ -4,6 +4,11 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Random;
+
 public class Generation extends JDialog implements ActionListener {
 	
 	JPanel windowGeneration;
@@ -13,6 +18,8 @@ public class Generation extends JDialog implements ActionListener {
     JButton button_cancel;
     Data dataGen;
 	private boolean result; // результат работы окна (true - нажатие кнопки OK, false - нажатие кнопки Отмена);
+	// А это для дочернего процесса дочернего
+	private GenerationParam dialog = null; //сслыка, пока пустая, на объект дочернего окна
 	
 	public Generation(java.awt.Frame parent, Data data) {
 
@@ -39,7 +46,6 @@ public class Generation extends JDialog implements ActionListener {
 		// Automatic gap insertion:
 		grl.setAutoCreateGaps(true);
     	grl.setAutoCreateContainerGaps(true); 	
-    	
     	grl.setHorizontalGroup(
     			grl.createSequentialGroup()
     			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
@@ -55,7 +61,7 @@ public class Generation extends JDialog implements ActionListener {
     	    		  .addComponent(button_auto)
     	    		  .addComponent(button_cancel)
     			);
-    	
+
 		this.add(windowGeneration);
 		
 		// Сделать размер окна подходящим
@@ -76,17 +82,66 @@ public class Generation extends JDialog implements ActionListener {
         return this.result; // вернуть в качестве результата условное значение нажатой кнопки
 	}
 	
+	 public boolean readArray(File file, int real_length) {
+	    	
+	    try {
+		   	Scanner in = new Scanner(file);
+		   	real_length = 0;
+		   	int size = 0;
+		   	if (in.hasNextInt()) 
+		   		size =  in.nextInt();
+		   	else 
+		   		return false;
+		   	dataGen.array = new int[size];
+		   	if (in.hasNextInt()) {
+				while(in.hasNextInt()){
+					dataGen.array[real_length] = in.nextInt();	
+					real_length++;				
+				}
+				in.close();
+				return true;
+		   	}
+		   	else
+		   		return false;
+	    }
+	    catch (FileNotFoundException ex) {
+	    	return false;
+	    }
+	 }
+	 
 	 public void actionPerformed(ActionEvent e) {
 		 
 		// Получение источника события
 	    JButton clickedButton =  (JButton) e.getSource();
 	    String actioncommand = clickedButton.getActionCommand();
 	    if (actioncommand == dataGen.b_file_txt) {
-	    	
+	    	// Создаем новый объект
+	    	// Отображаем диалог пользователю
+	    	// В ret заносится значение, по которому мы можем понять, что хочет пользователь
+	    	JFileChooser fileopen = new JFileChooser();             
+	    	int ret = fileopen.showDialog(null, "Открыть файл");
+	    	if (ret == JFileChooser.APPROVE_OPTION) {
+	    	    File file = fileopen.getSelectedFile();
+	    	    int real_length = 0;
+	    	    // Считываем массив тут
+	    	    boolean inforWasRead = readArray(file, real_length);   	    
+	    		if ((dataGen.array == null) || (!inforWasRead))
+	    		{ //если массив пустой, тогда
+	    			JOptionPane.showMessageDialog(null, "При чтении с файла произошла ошибка", " ", JOptionPane.ERROR_MESSAGE);
+	    			return;
+	    		}
+	    		else {
+	    			//custom title, no icon
+	    			JOptionPane.showMessageDialog(this, "Данные считаны успешно!"," ", JOptionPane.PLAIN_MESSAGE);	    		}
+	    		}
 	    	this.result = true; 
 			this.dispose(); // уничтожить окно		    		
 	    }
 	    if (actioncommand == dataGen.b_string_txt) {
+	    	
+	    	
+	    	
+	    	
 	    	
 	    	
 	    	
@@ -96,7 +151,21 @@ public class Generation extends JDialog implements ActionListener {
 	    if (actioncommand == dataGen.b_auto_txt) { 
 	    	
 	    	
+	    	this.dialog = new GenerationParam(this);
+    		if (this.dialog.executeParam()) {
+		        // действия при нажатии клавиши ОК
+ 		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
+ 		    }
+  		    else {
+   		           // действия при нажатии на клавишу отмены	
+   		    }	 
+	    	  	    		    		    	
 	    	
+	    	
+	    	Random r = new Random();
+	    	dataGen.array = new int[50];
+	    	for(int j = 0; j < dataGen.array.length; j++)
+	    		dataGen.array[j] = r.nextInt(70);	    	
 	    	this.result = true; 
 			this.dispose(); // уничтожить окно	    	
 	    }

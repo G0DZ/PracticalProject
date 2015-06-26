@@ -1,6 +1,7 @@
 package def;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Sort extends JFrame{
 
@@ -15,16 +16,7 @@ public class Sort extends JFrame{
 	JButton button_check;
 	JButton button_save;
 	JButton button_revival;
-	// 2. Текстовое поле (временное - для проверки корректности работы)
-	private JTextField displayField;
 
-    public void setDisplayValue(String val){
-        displayField.setText(val);
-    }
-
-    public String getDisplayValue() {
-        return displayField.getText();
-    } 
 
     // Конструктор нам все нарисует как надо
     Sort(Data data){
@@ -41,10 +33,6 @@ public class Sort extends JFrame{
         windowContent.add("North",vpanel);
        
         
-        // Создаем текстовое поле размером в 30 колоннок
-        displayField = new JTextField(30);
-        // Размещаем его в верхней части экрана
-        windowContent.add("Center",displayField);
         
         // Создаем кнопочки (с помощью конструктора им можно задать имя)
     	button_input = new JButton(data.b_input_txt);
@@ -110,7 +98,7 @@ public class Sort extends JFrame{
         frameCore.pack(); 
         // Запрет на изменение размера экрана
         frameCore.setResizable(false);
-        
+                   
         //Точка размещения экрана
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
         int w = frameCore.getWidth();
@@ -122,5 +110,6 @@ public class Sort extends JFrame{
 		// Отображаю окно 
 		frameCore.setVisible(true);
      }
+   
     
 }
