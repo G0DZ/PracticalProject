@@ -1,5 +1,6 @@
 package def;
 import def.SortAlgorithms.InsertionSort;
+import def.SortAlgorithms.MergeSort;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent;
 import javax.swing.*;
@@ -51,7 +52,7 @@ public class SortEngine extends JFrame implements ActionListener {
 					for (int i = 0; i < dataEngine.array.length; i++) {
 						parent.vpanel.PanelArray[i] = dataEngine.array[i];
 					}
-		    		Thread is1 = new InsertionSort(parent);
+		    		Thread is1 = new MergeSort(parent);
 		    		is1.start();
 	    		}
     		}
