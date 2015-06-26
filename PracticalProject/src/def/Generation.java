@@ -140,8 +140,14 @@ public class Generation extends JDialog implements ActionListener {
 	    if (actioncommand == dataGen.b_string_txt) {
 	    	
 	    	
-	    	
-	    	
+	    	this.dialog = new GenerationParam(this, dataGen);
+    		if (this.dialog.executeParam()) {
+		        // действия при нажатии клавиши ОК
+ 		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
+ 		    }
+  		    else {
+   		           // действия при нажатии на клавишу отмены	
+   		    }  	
 	    	
 	    	
 	    	
@@ -151,14 +157,7 @@ public class Generation extends JDialog implements ActionListener {
 	    if (actioncommand == dataGen.b_auto_txt) { 
 	    	
 	    	
-	    	this.dialog = new GenerationParam(this);
-    		if (this.dialog.executeParam()) {
-		        // действия при нажатии клавиши ОК
- 		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
- 		    }
-  		    else {
-   		           // действия при нажатии на клавишу отмены	
-   		    }	 
+	 
 	    	  	    		    		    	
 	    	
 	    	
