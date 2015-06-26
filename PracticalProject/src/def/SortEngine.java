@@ -9,7 +9,8 @@ import javax.swing.JButton;
 public class SortEngine extends JFrame implements ActionListener {
  
 	Sort parent; // ссылка на Sort
-	private Generation dialog = null; //сслыка, пока пустая, на объект дочернего окна
+	private Generation dialogGen = null; //сслыка, пока пустая, на объект дочернего окна
+	private ChooseSorting dialogChSort = null; //сслыка, пока пустая, на объект дочернего окна
 	Data dataEngine;
 	boolean haveBeenLoad;
 	
@@ -28,8 +29,8 @@ public class SortEngine extends JFrame implements ActionListener {
     	if (actioncommand == dataEngine.b_input_txt) {
     		// обработчик нажатия на кнопку, которая по логике должна вызывать дочернее окно
     	    // создаём объект дочернего окна, передавая в конструктор this-ссылку - т.о., именно это окно становится для нового родительским
-    		this.dialog = new Generation(this, dataEngine);
-    		if (this.dialog.execute()) {
+    		this.dialogGen = new Generation(this, dataEngine);
+    		if (this.dialogGen.execute()) {
 		        // действия при нажатии клавиши ОК
  		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
     			haveBeenLoad = true;
@@ -48,12 +49,24 @@ public class SortEngine extends JFrame implements ActionListener {
 	    			return;
 	    		}
 	    		else {
-					parent.vpanel.PanelArray = new int[dataEngine.array.length];
-					for (int i = 0; i < dataEngine.array.length; i++) {
+	    			parent.vpanel.PanelArray = new int[dataEngine.array.length];
+					for (int i = 0; i < dataEngine.array.length; i++) 
 						parent.vpanel.PanelArray[i] = dataEngine.array[i];
-					}
-		    		Thread is1 = new MergeSort(parent);
-		    		is1.start();
+	    			this.dialogChSort = new ChooseSorting(this, dataEngine);
+	        		int x = this.dialogChSort.executeSort();
+	    			switch(x)
+	    			{
+	    			case 1:
+			    		Thread is1 = new InsertionSort(parent);
+			    		is1.start();
+			    		break;
+	    			case 2:
+	    				Thread is2 = new MergeSort(parent);
+			    		is2.start();
+			    		break;
+	    			case 0:
+	    				break;
+	    			}
 	    		}
     		}
     		else {
