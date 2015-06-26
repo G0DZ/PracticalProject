@@ -28,8 +28,8 @@ public class Sort extends JFrame{
         windowContent.setLayout(bl);
         
         vpanel = new VisPanel();
-        vpanel.setPreferredSize(new Dimension(1000, 400));
-        vpanel.setBackground(Color.PINK);
+        vpanel.setPreferredSize(new Dimension(1000, 380));
+        vpanel.setBackground(Color.MAGENTA);
         windowContent.add("North",vpanel);
        
         

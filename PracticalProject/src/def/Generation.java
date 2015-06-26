@@ -162,7 +162,7 @@ public class Generation extends JDialog implements ActionListener {
 	    	
 	    	
 	    	Random r = new Random();
-	    	dataGen.array = new int[50];
+	    	dataGen.array = new int[48];
 	    	for(int j = 0; j < dataGen.array.length; j++)
 	    		dataGen.array[j] = r.nextInt(70);	    	
 	    	this.result = true; 
