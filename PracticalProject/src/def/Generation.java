@@ -6,34 +6,15 @@ import javax.swing.*;
 
 public class Generation extends JDialog implements ActionListener {
 	
-	
-	
-	/*
-	 * 
-	
-	    private void jButtonOKMouseClicked(java.awt.event.MouseEvent evt) { // обработка нажатия клавиши ОК
-			this.result = true; // пользователь нажал ОК
-			this.dispose(); // уничтожить окно
-	    }
-	 
-		private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {
-			this.result = false; // пользователь нажал Отмена
-			this.dispose(); // уничтожить окно
-		}
-	       
-	        public boolean execute() { // метод для "общения" с родительским окном
-	                this.setVisible(true); // прорисовать дочернее окно; в данном месте выполнение программы приостановится, ожидая окончания работы пользователя (в нашем случае - функции dispose())
-			return this.result; // вернуть в качестве результата условное значение нажатой кнопки
-	         }
-	*/
-	
 	JPanel windowGeneration;
-	JPanel paramPanel;
+	JPanel cancelOKPanel;
 	JPanel radioPanel;
 	JRadioButton radio_file;
     JRadioButton radio_string;
     JRadioButton radio_auto;
     JButton button_opt_for;
+    JButton button_OK;
+    JButton button_cancel;
 	private boolean result; // результат работы окна (true - нажатие кнопки OK, false - нажатие кнопки Отмена);
 	
 	public Generation(java.awt.Frame parent, Data data) {
@@ -69,12 +50,19 @@ public class Generation extends JDialog implements ActionListener {
 	    radioPanel.add(radio_file);
 	    radioPanel.add(radio_string);
 	    radioPanel.add(radio_auto);
+	    
+	    button_OK = new JButton(data.b_OK_txt);
+	    button_cancel = new JButton(data.b_cancel_txt);
+	    cancelOKPanel = new JPanel();
+	    FlowLayout fL = new FlowLayout(); 
+    	windowGeneration.setLayout(fL);
+    	cancelOKPanel.add(button_OK);
+ 	    cancelOKPanel.add(button_cancel);
 
 		windowGeneration.add("North",radioPanel);
 	    button_opt_for.setPreferredSize(new Dimension(15, 10));
 	    windowGeneration.add("Center",button_opt_for);
-	    paramPanel = new JPanel();
-	    windowGeneration.add("South",paramPanel);
+	    windowGeneration.add("South",cancelOKPanel);
 	    
 	    
 	          
@@ -100,47 +88,32 @@ public class Generation extends JDialog implements ActionListener {
 	
 	
 	 public void actionPerformed(ActionEvent e) {
-	    	
-	    	/*
-	    	// Получение источника события
-	    	JButton clickedButton =  (JButton) e.getSource();
-	    	// Если это кнопка "Ввод исходных данных"
-	    	if (clickedButton.getActionCommand() == dataEngine.b_input_txt) {
-	    		// Считать исходные данные в массив array[];
-	    		int real_length = 0;
-	    		boolean inforWasRead = readArray("input1.txt", real_length);		
-	    		
-	    		if (inforWasRead) { 
-	    			AlgorithmOfSort.insertionSort(dataEngine.array);
-	    			    			
-	    			parent.vpanel.PanelArray = new int[dataEngine.array.length];
-	    			for (int i = 0; i < dataEngine.array.length; i++) {
-	    				parent.vpanel.PanelArray[i] = dataEngine.array[i];
-	    			}
-	    			parent.vpanel.repaint();
-	    		}
-	    		else {
-	    			parent.setDisplayValue("Файл не найден!");
-	    		}
-	    	}*/
+		 
+		 
+		 
+		 
+		 
+		 /*
+			 * 
+			
+			    private void jButtonOKMouseClicked(java.awt.event.MouseEvent evt) { // обработка нажатия клавиши ОК
+					this.result = true; // пользователь нажал ОК
+					this.dispose(); // уничтожить окно
+			    }
+			 
+				private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {
+					this.result = false; // пользователь нажал Отмена
+					this.dispose(); // уничтожить окно
+				}
+			       
+			        public boolean execute() { // метод для "общения" с родительским окном
+			                this.setVisible(true); // прорисовать дочернее окно; в данном месте выполнение программы приостановится, ожидая окончания работы пользователя (в нашем случае - функции dispose())
+					return this.result; // вернуть в качестве результата условное значение нажатой кнопки
+			         }
+			*/
+		 
+		 
+	    
 	    } 
-	 /* public boolean readArray(String fileName, int real_length) {
- 	
- 	try {
-	    	Scanner in = new Scanner(new File(fileName));
-	    	real_length = 0;
-	    	int size =  in.nextInt();
-	    	dataEngine.array = new int[size];
-			while(in.hasNextInt()){
-				dataEngine.array[real_length] = in.nextInt();	
-				real_length++;
-			}
-			in.close();	
-	    	return true;
- 	}
- 	catch (FileNotFoundException ex) {
-    		return false;
- 	}
- }*/
 
 }

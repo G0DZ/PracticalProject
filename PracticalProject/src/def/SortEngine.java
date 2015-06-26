@@ -21,22 +21,6 @@ public class SortEngine extends JFrame implements ActionListener {
     	this.parent = parent;
     	dataEngine = data;
     }
-     /*  	    
-    // обработчик нажатия на кнопку, которая по логике должна вызывать дочернее окно
-    private void jButtonAddMouseClicked(MouseEvent evt) {
-    	 // создаём объект дочернего окна, передавая в конструктор this-ссылку - т.о., именно это окно становится для нового родительским
-        this.dialog = new Generation(this, dataEngine);
-        
-        /*  if (this.dialog.execute()) {
-        // действия при нажатии клавиши ОК
-        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
-        }
-        else {
-            // действия при нажатии на клавишу отмены	
-        }*/
-   // }*/
-
- 
     
     public boolean readArray(String fileName, int real_length) {
     	
@@ -64,8 +48,22 @@ public class SortEngine extends JFrame implements ActionListener {
     	// Если это кнопка "Ввод исходных данных"
     	String actioncommand = clickedButton.getActionCommand();
     	if (actioncommand == dataEngine.b_input_txt) {
-    	
-    		 this.dialog = new Generation(this, dataEngine); 	
+    		// обработчик нажатия на кнопку, которая по логике должна вызывать дочернее окно
+    	    // создаём объект дочернего окна, передавая в конструктор this-ссылку - т.о., именно это окно становится для нового родительским
+    		this.dialog = new Generation(this, dataEngine);
+       
+        /*  if (this.dialog.execute()) {
+		        // действия при нажатии клавиши ОК
+ 		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
+ 		        }
+  		        else {
+   		            // действия при нажатии на клавишу отмены	
+   		        }*/
+
+    		 
+    		 
+    		 
+    		 
     	
     	
     	}

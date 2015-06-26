@@ -18,6 +18,8 @@ public class Data
 	String b_save_txt = "Сохранение";
 	String b_revival_txt = "Восстановление";
 	String b_opt_for_txt = "Выбрать";
+	String b_OK_txt = "ОК";
+	String b_cancel_txt = "Отмена";
 	
 	String rb_file_txt = "Файл";
 	String rb_string_txt = "Строка ввода";
