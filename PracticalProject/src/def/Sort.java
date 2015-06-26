@@ -36,7 +36,7 @@ public class Sort {
         windowContent.setLayout(bl);
         
         vpanel = new VisPanel();
-        vpanel.setPreferredSize(new Dimension(500, 250));
+        vpanel.setPreferredSize(new Dimension(1000, 400));
         vpanel.setBackground(Color.PINK);
         windowContent.add("North",vpanel);
        
