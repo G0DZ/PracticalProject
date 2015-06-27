@@ -14,6 +14,9 @@ public class SortEngine extends JFrame implements ActionListener {
 	private ChooseSorting dialogChSort = null; //сслыка, пока пустая, на объект дочернего окна
 	Data dataEngine;
 	boolean haveBeenLoad;
+	InsertionSort IS;
+	MergeSort MS;
+	
 	
     // Конструктор сохраняет ссылку к Sort window в переменной класса parent
     SortEngine(Sort parent, Data data){
@@ -67,12 +70,20 @@ public class SortEngine extends JFrame implements ActionListener {
 	    			switch(x)
 	    			{
 	    			case 1:
-			    		Thread is1 = new InsertionSort(parent);
-			    		is1.start();
-			    		break;
+	    				IS = new InsertionSort(parent, true);
+			    		IS.start();
+	    				break;
+	    			case 11:
+	    				IS = new InsertionSort(parent, false);
+			    		IS.start();
+	    				break;
 	    			case 2:
-	    				Thread is2 = new MergeSort(parent);
-			    		is2.start();
+	    				MS = new MergeSort(parent, true);
+			    		MS.start();
+			    		break;
+	    			case 22:
+	    				MS = new MergeSort(parent, false);
+			    		MS.start();
 			    		break;
 	    			case 0:
 	    				break;
@@ -128,6 +139,13 @@ public class SortEngine extends JFrame implements ActionListener {
     			JOptionPane.showMessageDialog(null, "Исходные данные не загружены", " ", JOptionPane.WARNING_MESSAGE);
     			return;
     		}	
+    	}
+    	if(actioncommand == dataEngine.b_make_step_txt)
+    	{
+    		if(IS != null)
+    			IS.wakeSort();
+    		if(MS != null)
+    			MS.wakeSort();
     	}
     }
     

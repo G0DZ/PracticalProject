@@ -22,9 +22,11 @@ public class Data
 	String b_auto_txt = "Автоматическая";
 	String b_OK_txt = "ОК";
 	String b_cancel_txt = "Отмена";
+	//окошко выбора сортировки
 	String b_Insertion_txt = "Сортировка вставками";
 	String b_Merge_txt = "Сортировка слиянием";
-	
+	String b_Insertion_step_txt = "Сортировка вставками (пошагово)";
+	String b_Merge_step_txt = "Сортировка слиянием(пошагово)";
 	Data() 
 	{
 		
