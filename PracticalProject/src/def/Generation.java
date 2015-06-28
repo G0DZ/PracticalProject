@@ -154,13 +154,7 @@ public class Generation extends JDialog implements ActionListener {
 	    	this.result = true; 
 			this.dispose(); // уничтожить окно	    	
 	    }
-	    if (actioncommand == dataGen.b_auto_txt) { 
-	    	
-	    	
-	 
-	    	  	    		    		    	
-	    	
-	    	
+	    if (actioncommand == dataGen.b_auto_txt) {
 	    	Random r = new Random();
 	    	dataGen.array = new int[100];
 	    	for(int j = 0; j < dataGen.array.length; j++)

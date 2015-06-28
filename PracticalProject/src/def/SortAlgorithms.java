@@ -1,9 +1,69 @@
 package def;
 
-import java.util.Arrays;
+import java.awt.Color;
+
+import javax.swing.JOptionPane;
 
 public class SortAlgorithms
 {
+	public static class Check extends Thread
+	{
+		Sort parent;
+		Data dataEngine;
+		Check(Sort S, Data D)
+		{
+			parent = S;
+			dataEngine = D;
+		}
+		
+		public void run()
+		{
+    		if(parent.vpanel.PanelArray == null)
+    		{
+    			parent.vpanel.PanelArray = new ColorInt[dataEngine.array.length];
+    			for (int i = 0; i < dataEngine.array.length; i++)
+    			{
+    				parent.vpanel.PanelArray[i] = new ColorInt();
+					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
+    			}
+    		}
+    		boolean checkbool = true;
+    		//сохраняем старые цвета: вдруг пригодятся.
+    		Color[] ColorArray = new Color[parent.vpanel.PanelArray.length];
+    		for (int i = 0; i < parent.vpanel.PanelArray.length; i++)
+			{
+    			ColorArray[i] = new Color(0);
+				ColorArray[i] = parent.vpanel.PanelArray[i].InColor;
+			}
+    		//
+    		parent.vpanel.PanelArray[0].InColor = Color.GREEN;
+    		for (int i = 1; i < parent.vpanel.PanelArray.length; i++)
+    		{
+				if(parent.vpanel.PanelArray[i-1].I > parent.vpanel.PanelArray[i].I)
+				{
+					JOptionPane.showMessageDialog(parent, "Массив НЕ упорядочен!"," ", JOptionPane.INFORMATION_MESSAGE);
+					checkbool = false;
+					break;
+				}
+				parent.vpanel.PanelArray[i].InColor = Color.GREEN;
+				try {
+	    			sleep(10);
+	    		} catch (InterruptedException e) {
+	    			e.printStackTrace();
+	    		}
+				parent.vpanel.repaint();
+    		}
+    		if(checkbool)
+    			JOptionPane.showMessageDialog(parent, "Массив упорядочен!"," ", JOptionPane.INFORMATION_MESSAGE);
+			//возвращаем потерянные цвета.
+			for (int i = 0; i < parent.vpanel.PanelArray.length; i++)
+				parent.vpanel.PanelArray[i].InColor = ColorArray[i];
+			//
+    		parent.vpanel.repaint();
+	    }
+		
+	}
+	
 	public static class InsertionSort extends Thread
 	{
 		Sort parent;
@@ -21,17 +81,17 @@ public class SortAlgorithms
 	    	{
 	    		synchronized (this)
 	    		{
-		    		temp = parent.vpanel.PanelArray[i];
+		    		temp = parent.vpanel.PanelArray[i].I;
 		    		for (j = i - 1; j >= 0; j--)
 		    		{
-		    			if (parent.vpanel.PanelArray[j] < temp)
+		    			if (parent.vpanel.PanelArray[j].I < temp)
 		    				break;
-		    			parent.vpanel.PanelArray[j + 1] = parent.vpanel.PanelArray[j];
-		    			parent.vpanel.PanelArray[j] = temp;
+		    			parent.vpanel.PanelArray[j + 1].I = parent.vpanel.PanelArray[j].I;
+		    			parent.vpanel.PanelArray[j].I = temp;
 		    		}
 		    		parent.vpanel.repaint();
 		        	try {
-		    			sleep(100);
+		    			sleep(10);
 		    		} catch (InterruptedException e) {
 		    			e.printStackTrace();
 		    		}
@@ -79,7 +139,7 @@ public class SortAlgorithms
 			MergeSorting(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1);
 	    }
 		
-		void MergeSorting(int[] arr, int l, int r)
+		void MergeSorting(ColorInt[] arr, int l, int r)
 		{	
 			synchronized (this) 
 			{
@@ -97,7 +157,7 @@ public class SortAlgorithms
 		}
 		}
 		
-		void MergeS(int[] arr, int l, int r, int m)
+		void MergeS(ColorInt[] arr, int l, int r, int m)
 		{
 
 		    int j, start, fin;
@@ -105,19 +165,19 @@ public class SortAlgorithms
 		    start=l; //начало левой части
 		    fin=m+1; //начало правой части
 		    for(j=l; j<=r; j++) //выполнять от начала до конца
-		        if ((start<=m) && ((fin>r) || (arr[start]<arr[fin])))
-		            mas[j]=arr[start++];
+		        if ((start<=m) && ((fin>r) || (arr[start].I<arr[fin].I)))
+		            mas[j]=arr[start++].I;
 		        else
-		            mas[j]=arr[fin++];
+		            mas[j]=arr[fin++].I;
 		    //возвращение результата в список
 		    for(j=l; j<=r; j++)
 		    {
-		        arr[j]=mas[j];
+		        arr[j].I=mas[j];
 
 		    }
 		    parent.vpanel.repaint();
         	try {
-    			sleep(100);
+    			sleep(10);
     		} catch (InterruptedException e) {
     			e.printStackTrace();
     		}

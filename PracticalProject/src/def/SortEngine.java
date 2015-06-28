@@ -1,7 +1,9 @@
 package def;
 import def.SortAlgorithms.InsertionSort;
 import def.SortAlgorithms.MergeSort;
+import def.SortAlgorithms.Check;
 
+import java.awt.Color;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent;
 
@@ -16,7 +18,7 @@ public class SortEngine extends JFrame implements ActionListener {
 	boolean haveBeenLoad;
 	InsertionSort IS;
 	MergeSort MS;
-	
+	Check Ch;
 	
     // Конструктор сохраняет ссылку к Sort window в переменной класса parent
     SortEngine(Sort parent, Data data){
@@ -46,9 +48,12 @@ public class SortEngine extends JFrame implements ActionListener {
 	    		}
 	    		else 
 	    		{
-	    			parent.vpanel.PanelArray = new int[dataEngine.array.length];
-	    			for (int i = 0; i < dataEngine.array.length; i++) 
-						parent.vpanel.PanelArray[i] = dataEngine.array[i];
+	    			parent.vpanel.PanelArray = new ColorInt[dataEngine.array.length];
+	    			for (int i = 0; i < dataEngine.array.length; i++)
+	    			{
+	    				parent.vpanel.PanelArray[i] = new ColorInt();
+						parent.vpanel.PanelArray[i].I = dataEngine.array[i];
+	    			}
 	    			parent.vpanel.repaint();
 	    		}
     		}
@@ -62,12 +67,15 @@ public class SortEngine extends JFrame implements ActionListener {
     	{ //если это кнопка "Запуск сортировки"
     		if (haveBeenLoad)
     		{
-	    			parent.vpanel.PanelArray = new int[dataEngine.array.length];
-					for (int i = 0; i < dataEngine.array.length; i++) 
-						parent.vpanel.PanelArray[i] = dataEngine.array[i];
-	    			this.dialogChSort = new ChooseSorting(this, dataEngine);
-	        		int x = this.dialogChSort.executeSort();
-	    			switch(x)
+    			parent.vpanel.PanelArray = new ColorInt[dataEngine.array.length];
+    			for (int i = 0; i < dataEngine.array.length; i++)
+    			{
+    				parent.vpanel.PanelArray[i] = new ColorInt();
+					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
+    			}
+	    		this.dialogChSort = new ChooseSorting(this, dataEngine);
+	        	int x = this.dialogChSort.executeSort();
+	    		switch(x)
 	    			{
 	    			case 1:
 	    				IS = new InsertionSort(parent, true);
@@ -87,7 +95,7 @@ public class SortEngine extends JFrame implements ActionListener {
 			    		break;
 	    			case 0:
 	    				break;
-	    			}
+	    		}
 	    	}
     		else 
     		{
@@ -99,9 +107,12 @@ public class SortEngine extends JFrame implements ActionListener {
     	{ //если это кнопка "Восстановить"
     		if (haveBeenLoad) 
     		{ //если данные были загружены
-	    		parent.vpanel.PanelArray = new int[dataEngine.array.length];
-				for (int i = 0; i < dataEngine.array.length; i++) 
-					parent.vpanel.PanelArray[i] = dataEngine.array[i];
+    			parent.vpanel.PanelArray = new ColorInt[dataEngine.array.length];
+    			for (int i = 0; i < dataEngine.array.length; i++)
+    			{
+    				parent.vpanel.PanelArray[i] = new ColorInt();
+					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
+    			}
 				parent.vpanel.repaint();
 				JOptionPane.showMessageDialog(this, "Исходный массив восстановлен!"," ", JOptionPane.INFORMATION_MESSAGE);
     		}
@@ -115,24 +126,8 @@ public class SortEngine extends JFrame implements ActionListener {
     	{ //если это кнопка "Проверка"
     		if (haveBeenLoad) 
     		{ //если данные были загружены
-	    		if(parent.vpanel.PanelArray == null)
-	    		{
-	    			parent.vpanel.PanelArray = new int[dataEngine.array.length];
-					for (int i = 0; i < dataEngine.array.length; i++) 
-						parent.vpanel.PanelArray[i] = dataEngine.array[i];
-	    		}
-	    		boolean checkbool = true;
-	    		for (int i = 1; i < parent.vpanel.PanelArray.length; i++)
-	    		{
-					if(parent.vpanel.PanelArray[i-1] > parent.vpanel.PanelArray[i])
-					{
-						JOptionPane.showMessageDialog(this, "Массив НЕ упорядочен!"," ", JOptionPane.INFORMATION_MESSAGE);
-						checkbool = false;
-						return;
-					}
-	    		}
-	    		if(checkbool)
-	    			JOptionPane.showMessageDialog(this, "Массив упорядочен!"," ", JOptionPane.INFORMATION_MESSAGE);
+    			Ch = new Check(parent, dataEngine);
+    			Ch.start();
 	    	}
     		else
     		{
