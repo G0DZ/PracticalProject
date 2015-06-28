@@ -37,6 +37,7 @@ public class SortAlgorithms
 			}
     		//
     		parent.vpanel.PanelArray[0].InColor = Color.GREEN;
+    		
     		for (int i = 1; i < parent.vpanel.PanelArray.length; i++)
     		{
 				if(parent.vpanel.PanelArray[i-1].I > parent.vpanel.PanelArray[i].I)
@@ -77,6 +78,9 @@ public class SortAlgorithms
 		public void run()
 	    {
 	    	int i, j, temp;
+	    	//обновляем данные о сортировке.
+			parent.vpanel.reInitComponents(); //обнуляем значения
+			parent.vpanel.SortName = " вставками"; //даем сортировке название.
 	    	for (i = 1; i < parent.vpanel.PanelArray.length; i++)
 	    	{
 	    		synchronized (this)
@@ -84,10 +88,13 @@ public class SortAlgorithms
 		    		temp = parent.vpanel.PanelArray[i].I;
 		    		for (j = i - 1; j >= 0; j--)
 		    		{
+	    				parent.vpanel.ACInt+=2; //2 доступа к массиву
+		    			parent.vpanel.CompInt+=1; //одно сравнение
 		    			if (parent.vpanel.PanelArray[j].I < temp)
 		    				break;
 		    			parent.vpanel.PanelArray[j + 1].I = parent.vpanel.PanelArray[j].I;
 		    			parent.vpanel.PanelArray[j].I = temp;
+		    			parent.vpanel.ACInt+=3; //еще 3 доступа.
 		    		}
 		    		parent.vpanel.repaint();
 		        	try {
@@ -134,7 +141,9 @@ public class SortAlgorithms
 		
 		public void run()
 	    {
-			
+	    	//обновляем данные о сортировке.
+			parent.vpanel.reInitComponents(); //обнуляем значения
+			parent.vpanel.SortName = " слиянием"; //даем сортировке название.
 			parent.vpanel.repaint();
 			MergeSorting(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1);
 	    }
@@ -173,8 +182,10 @@ public class SortAlgorithms
 		    for(j=l; j<=r; j++)
 		    {
 		        arr[j].I=mas[j];
-
+				parent.vpanel.ACInt++; //доступ к массиву
 		    }
+			parent.vpanel.ACInt+=3; //3 доступа к массиву
+			parent.vpanel.CompInt+=3; // 3 сравнения
 		    parent.vpanel.repaint();
         	try {
     			sleep(10);

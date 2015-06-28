@@ -54,6 +54,7 @@ public class SortEngine extends JFrame implements ActionListener {
 	    				parent.vpanel.PanelArray[i] = new ColorInt();
 						parent.vpanel.PanelArray[i].I = dataEngine.array[i];
 	    			}
+					parent.vpanel.SortName = null; //главное - не забыть, что сортировки нет, и убрать ее имя.
 	    			parent.vpanel.repaint();
 	    		}
     		}
@@ -113,6 +114,7 @@ public class SortEngine extends JFrame implements ActionListener {
     				parent.vpanel.PanelArray[i] = new ColorInt();
 					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
     			}
+				parent.vpanel.SortName = null; //главное - не забыть, что сортировки нет, и убрать ее имя.
 				parent.vpanel.repaint();
 				JOptionPane.showMessageDialog(this, "Исходный массив восстановлен!"," ", JOptionPane.INFORMATION_MESSAGE);
     		}

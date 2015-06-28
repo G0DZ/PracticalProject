@@ -6,9 +6,23 @@ import java.awt.*;
 public class VisPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
+	private final int fontsize = 14; //размер шрифта.
 	public ColorInt[] PanelArray;
 	private int WidthCoef;
 	private int HeigthCoef;
+	
+	private String SortDef = "Сортировка: ";
+	String SortName = null;
+	private String Comp = "Сравнений: ";
+	int CompInt;
+	private String AC = "Доступов к массиву: "; 
+	int ACInt;
+	private String Delay = "Задержка : ";
+	int DelayInt = 0;
+	private String ms = " мс";
+	private String Delim = " | ";
+	
+	private String NumberofElements = " элементов";
 	
 	public VisPanel() 
 	{
@@ -29,7 +43,16 @@ public class VisPanel extends JPanel
 		    Graphics2D g2d = (Graphics2D) g;
 		    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		    // drawing finction 
-		    int max=PanelArray[0].I;   //начальное условие для поиска максимального элемента в массиве (чтобы определить масштаб)
+			g2d.setFont(new Font("Calibri", Font.PLAIN, fontsize));
+		    if (SortName != null)
+			{
+				String S = SortDef+SortName+Delim+Comp+CompInt+Delim+AC+ACInt+Delim+Delay+DelayInt+ms;
+				g2d.drawString(S, 5, 12);
+			}
+			//печать сообщения с количеством элементов.
+			g2d.drawString(PanelArray.length+NumberofElements, (int) (getWidth()-fontsize*6.54), fontsize-2); //6,54 - коэфициент ширины символа от размера шрифта (экспериментально) 
+		    //поиск максимума
+			int max=PanelArray[0].I;   //начальное условие для поиска максимального элемента в массиве (чтобы определить масштаб)
 		    for(int i = 1;i < PanelArray.length; i++)
 		        if(PanelArray[i].I > max)
 		        	max = PanelArray[i].I; //поиск максимального элемента
@@ -42,5 +65,12 @@ public class VisPanel extends JPanel
 		    }
 		}
     }
+	
+	void reInitComponents()
+	{
+		CompInt = 0;
+		ACInt = 0;
+		DelayInt = 0;
+	}
 
 }
