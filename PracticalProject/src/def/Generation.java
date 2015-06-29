@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.Random;
 
 public class Generation extends JDialog implements ActionListener {
 	
@@ -141,25 +140,33 @@ public class Generation extends JDialog implements ActionListener {
 	    }
 // КНОПКА "СТРОКА ВВОДА"
 	    if (actioncommand == dataGen.b_string_txt) { 	   	
-	    	this.dialog = new GenerationParam(this, dataGen);
+	    	this.dialog = new GenerationParam(this, dataGen, 1);
     		if (this.dialog.executeParam()) {
 		        // действия при нажатии клавиши ОК
  		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
+    			JOptionPane.showMessageDialog(this, "Данные считаны успешно!"," ", JOptionPane.PLAIN_MESSAGE);
     			this.result = true; 
     			this.dispose(); // уничтожить окно
     		}
   		    else {
-   		           // действия при нажатии на клавишу отмены	
+   		           // Ничего не происходит ^^
    		    }  		    		    	
 	    }
+// КНОПКА "АВТОМАТИЧЕСКАЯ"
 	    if (actioncommand == dataGen.b_auto_txt) {
-	    	Random r = new Random();
-	    	dataGen.array = new int[1010];
-	    	for(int j = 0; j < dataGen.array.length; j++)
-	    		dataGen.array[j] = r.nextInt(70)+1;	    	
-	    	this.result = true; 
-			this.dispose(); // уничтожить окно	    	
+	    	this.dialog = new GenerationParam(this, dataGen, 2);
+    		if (this.dialog.executeParam()) {
+		        // действия при нажатии клавиши ОК
+ 		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна   		
+    			JOptionPane.showMessageDialog(this, "Данные считаны успешно!"," ", JOptionPane.PLAIN_MESSAGE);
+    			this.result = true; 
+    			this.dispose(); // уничтожить окно
+    		}
+  		    else {
+   		           // Ничего не происходит ^^
+   		    }    	    	
 	    }
+// КНОПКА "ОТМЕНА"
 	    if (actioncommand == dataGen.b_cancel_txt) {
 	    	this.result = false; // пользователь нажал Отмена
 			this.dispose(); // уничтожить окно
