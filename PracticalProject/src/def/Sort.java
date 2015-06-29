@@ -13,7 +13,7 @@ public class Sort extends JFrame{
 	JButton button_input;
 	JButton button_start_sort;
 	JButton button_make_step;
-	JButton button_check;
+	static JButton button_check;
 	JButton button_save;
 	JButton button_revival;
 

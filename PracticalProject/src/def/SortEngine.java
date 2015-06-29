@@ -65,9 +65,10 @@ public class SortEngine extends JFrame implements ActionListener {
     		 
     	}
     	if(actioncommand == dataEngine.b_start_sort_txt)
-    	{ //если это кнопка "Запуск сортировки"
+    	{ //если это кнопка "Запуск сортировки"   		
     		if (haveBeenLoad)
     		{
+    			Sort.button_check.setEnabled(false);
     			parent.vpanel.PanelArray = new ColorInt[dataEngine.array.length];
     			for (int i = 0; i < dataEngine.array.length; i++)
     			{
