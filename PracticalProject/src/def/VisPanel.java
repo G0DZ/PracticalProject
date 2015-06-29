@@ -22,7 +22,7 @@ public class VisPanel extends JPanel
 	private String ms = " мс";
 	private String Delim = " | ";
 	
-	private String NumberofElements = " элементов";
+	private String NumberofElements = " элем.";
 	
 	public VisPanel() 
 	{

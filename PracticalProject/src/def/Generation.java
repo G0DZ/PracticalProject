@@ -114,6 +114,7 @@ public class Generation extends JDialog implements ActionListener {
 		// Получение источника события
 	    JButton clickedButton =  (JButton) e.getSource();
 	    String actioncommand = clickedButton.getActionCommand();
+// КНОПКА "ФАЙЛ"
 	    if (actioncommand == dataGen.b_file_txt) {
 	    	// Создаем новый объект
 	    	// Отображаем диалог пользователю
@@ -132,27 +133,24 @@ public class Generation extends JDialog implements ActionListener {
 	    		}
 	    		else {
 	    			//custom title, no icon
-	    			JOptionPane.showMessageDialog(this, "Данные считаны успешно!"," ", JOptionPane.PLAIN_MESSAGE);	    		}
+	    			JOptionPane.showMessageDialog(this, "Данные считаны успешно!"," ", JOptionPane.PLAIN_MESSAGE);	
 	    		}
-	    	this.result = true; 
-			this.dispose(); // уничтожить окно		    		
+	    		this.result = true; 
+				this.dispose(); // уничтожить окно
+	    	}		    		
 	    }
-	    if (actioncommand == dataGen.b_string_txt) {
-	    	
-	    	
+// КНОПКА "СТРОКА ВВОДА"
+	    if (actioncommand == dataGen.b_string_txt) { 	   	
 	    	this.dialog = new GenerationParam(this, dataGen);
     		if (this.dialog.executeParam()) {
 		        // действия при нажатии клавиши ОК
  		        // здесь же прописывается считывание нужных результатов, введённых пользователем, используя функции get, заблаговременно прописанные вами в класе дочернего окна
- 		    }
+    			this.result = true; 
+    			this.dispose(); // уничтожить окно
+    		}
   		    else {
    		           // действия при нажатии на клавишу отмены	
-   		    }  	
-	    	
-	    	
-	    	
-	    	this.result = true; 
-			this.dispose(); // уничтожить окно	    	
+   		    }  		    		    	
 	    }
 	    if (actioncommand == dataGen.b_auto_txt) {
 	    	Random r = new Random();
@@ -169,3 +167,4 @@ public class Generation extends JDialog implements ActionListener {
 	} 
 
 }
+
