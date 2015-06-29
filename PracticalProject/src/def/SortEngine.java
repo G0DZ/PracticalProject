@@ -2,8 +2,6 @@ package def;
 import def.SortAlgorithms.InsertionSort;
 import def.SortAlgorithms.MergeSort;
 import def.SortAlgorithms.Check;
-
-import java.awt.Color;
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent;
 
@@ -11,6 +9,10 @@ import javax.swing.*;
 
 public class SortEngine extends JFrame implements ActionListener {
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Sort parent; // ссылка на Sort
 	private Generation dialogGen = null; //сслыка, пока пустая, на объект дочернего окна
 	private ChooseSorting dialogChSort = null; //сслыка, пока пустая, на объект дочернего окна

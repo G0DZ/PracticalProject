@@ -1,12 +1,16 @@
 package def;
 import javax.swing.*;
+
 import java.awt.*;
-import java.awt.event.*;
 
 public class Sort extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Объявление компонент
-	JPanel windowContent;
+	//JPanel windowContent;
 	JPanel p1;
 	VisPanel vpanel;
 	// 1. Кнопки
@@ -20,19 +24,10 @@ public class Sort extends JFrame{
 
     // Конструктор нам все нарисует как надо
     Sort(Data data){
-
-    	// Создаем панель (как бы главную панель)
-    	windowContent= new JPanel();
-    	// Говорим, что этой панелью будет управлять BorderLayout 
-    	BorderLayout bl = new BorderLayout(); 
-        windowContent.setLayout(bl);
-        
+       
         vpanel = new VisPanel();
         vpanel.setPreferredSize(new Dimension(1000, 380));
-        vpanel.setBackground(Color.MAGENTA);
-        windowContent.add("North",vpanel);
-       
-        
+        vpanel.setBackground(Color.CYAN);       
         
         // Создаем кнопочки (с помощью конструктора им можно задать имя)
     	button_input = new JButton(data.b_input_txt);
@@ -41,42 +36,40 @@ public class Sort extends JFrame{
     	button_check = new JButton(data.b_check_txt);
     	button_save = new JButton(data.b_save_txt);
     	button_revival = new JButton(data.b_revival_txt);
-    	
-    	// Создаем панель p1
-    	p1 = new JPanel();
-    	
-     	// Говорим, что этой панелью будет управлять GroupLayout
-    	GroupLayout grl = new GroupLayout(p1);
-    	p1.setLayout(grl);
-    	
-    	// Automatic gap insertion:
-    	grl.setAutoCreateGaps(true);
-    	grl.setAutoCreateContainerGaps(true);
-    	
-    	grl.setHorizontalGroup(
-    			grl.createSequentialGroup()
-    			      .addComponent(button_input, 180, 180, 180)
-    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-    			    		.addComponent(button_start_sort, 180, 180, 180)
-    	    			    .addComponent(button_make_step, 180, 180, 180))
-    			   	  .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-    			           .addComponent(button_check, 180, 180, 180)
-    			           .addComponent(button_save, 180, 180, 180)
-    			           .addComponent(button_revival, 180, 180, 180))
-    			);
-    	grl.setVerticalGroup(
-    			grl.createSequentialGroup()
-    				  .addGroup(grl.createParallelGroup(GroupLayout.Alignment.LEADING)     
-    					   .addComponent(button_input, 30, 30, 30)
-    					   .addComponent(button_start_sort, 30, 30, 30)
-    					   .addComponent(button_check, 30, 30, 30)
-    			           )
-    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.LEADING)  
-    			           .addComponent(button_make_step, 30, 30, 30)
-    			           .addComponent(button_save, 30, 30, 30))    			      
-    			      .addComponent(button_revival, 30, 30, 30)
-    			);
-    	  
+    		
+    	// Добавляем кнопочки на панель
+		p1 = new JPanel();
+		p1 .setLayout(null);
+		
+		vpanel.setBounds(20, 20, 1100, 400);
+		button_input.setBounds(20, 460, 180, 80);
+		
+		button_start_sort.setBounds(510, 440, 150, 30);
+		button_make_step.setBounds(510, 500, 150, 30);
+		
+		button_check.setBounds(700, 440, 150, 30);
+		button_save.setBounds(700, 500, 150, 30);
+		button_revival.setBounds(700, 550, 150, 30);
+		
+		p1.add(vpanel);
+		p1.add(button_input);
+		p1.add(button_start_sort);
+		p1.add(button_make_step);
+		p1.add(button_check);
+		p1.add(button_save);
+		p1.add(button_revival);
+		
+		
+		
+		
+		
+		
+		
+		
+			
+		getContentPane().add(p1);
+		setPreferredSize(new Dimension(1145, 610));
+    	 	
 		// Тут подключаем движок
 		SortEngine sEngine = new SortEngine(this, data);
 		button_input.addActionListener(sEngine);
@@ -84,32 +77,21 @@ public class Sort extends JFrame{
 		button_check.addActionListener(sEngine);
 		button_make_step.addActionListener(sEngine);
 		button_revival.addActionListener(sEngine);
-
-		// Размещаем панель p1 по центру экрана (главной панели)
-        windowContent.add("South",p1);
-        
-        
-        // Создаем фрейм, задаем ему название и размещаем там нашу главную панель          
-		JFrame frameCore = new JFrame(data.f_Sort_txt);
-		frameCore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frameCore.setContentPane(windowContent);
-
+           
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
-        frameCore.pack(); 
+		this.pack(); 
         // Запрет на изменение размера экрана
-        frameCore.setResizable(false);
-                   
+		this.setResizable(false);                   
         //Точка размещения экрана
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-        int w = frameCore.getWidth();
-        int h = frameCore.getHeight();
+        int w = this.getWidth();
+        int h = this.getHeight();
         center.x = center.x - w/2; 
         center.y = center.y - h/2;
-        frameCore.setLocation(center);
-
+        this.setLocation(center);
 		// Отображаю окно 
-		frameCore.setVisible(true);
+        this.setVisible(true);
      }
-   
-    
+       
 }

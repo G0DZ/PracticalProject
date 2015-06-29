@@ -6,6 +6,10 @@ import javax.swing.*;
 
 public class ChooseSorting extends JDialog implements ActionListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		private int resultSort = 0; // результат работы окна (true - нажатие кнопки OK, false - нажатие кнопки Отмена);
 		Data dataGen;
 	    JButton button_Insertion;

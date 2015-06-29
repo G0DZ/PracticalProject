@@ -12,6 +12,10 @@ import java.util.Random;
 import java.io.File;
 
 public class GenerationParam extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean resultParam; // результат работы окна (true - нажатие кнопки OK, false - нажатие кнопки Отмена);
 	int mode; // Режим работы вспомогательного окна
 	// Данные для режимов
