@@ -77,11 +77,20 @@ public class SortAlgorithms
 		
 		public void run()
 	    {
-	    	int i, j, temp;
 	    	//обновляем данные о сортировке.
 			parent.vpanel.reInitComponents(); //обнуляем значения
 			parent.vpanel.SortName = " вставками"; //даем сортировке название.
-	    	for (i = 1; i < parent.vpanel.PanelArray.length; i++)
+			InsSort();
+			//действия после работы потока.
+			parent.vpanel.reInitComponents(); //обнуляем значения
+			parent.vpanel.SortName = null; //убираем у сортировки название
+			JOptionPane.showMessageDialog(parent, "Сортировка вставками завершена!"," ", JOptionPane.INFORMATION_MESSAGE);
+	    }
+		
+		private void InsSort()
+		{
+	    	int i, j, temp;
+			for (i = 1; i < parent.vpanel.PanelArray.length; i++)
 	    	{
 	    		synchronized (this)
 	    		{
@@ -108,7 +117,8 @@ public class SortAlgorithms
 		        	}
 	    		}
 	    	}
-	    }
+		}
+		
 		
 		public void sleepSort()
 		{
@@ -146,9 +156,13 @@ public class SortAlgorithms
 			parent.vpanel.SortName = " слиянием"; //даем сортировке название.
 			parent.vpanel.repaint();
 			MergeSorting(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1);
+			//действия после работы потока.
+			parent.vpanel.reInitComponents(); //обнуляем значения
+			parent.vpanel.SortName = null; //убираем у сортировки название
+			JOptionPane.showMessageDialog(parent, "Сортировка вставками завершена!"," ", JOptionPane.INFORMATION_MESSAGE);
 	    }
 		
-		void MergeSorting(ColorInt[] arr, int l, int r)
+		private void MergeSorting(ColorInt[] arr, int l, int r)
 		{	
 			synchronized (this) 
 			{
@@ -166,7 +180,7 @@ public class SortAlgorithms
 		}
 		}
 		
-		void MergeS(ColorInt[] arr, int l, int r, int m)
+		private void MergeS(ColorInt[] arr, int l, int r, int m)
 		{
 
 		    int j, start, fin;

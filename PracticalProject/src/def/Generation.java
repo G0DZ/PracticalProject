@@ -156,7 +156,7 @@ public class Generation extends JDialog implements ActionListener {
 	    }
 	    if (actioncommand == dataGen.b_auto_txt) {
 	    	Random r = new Random();
-	    	dataGen.array = new int[100];
+	    	dataGen.array = new int[1010];
 	    	for(int j = 0; j < dataGen.array.length; j++)
 	    		dataGen.array[j] = r.nextInt(70)+1;	    	
 	    	this.result = true; 
