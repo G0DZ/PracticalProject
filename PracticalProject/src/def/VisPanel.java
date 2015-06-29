@@ -50,13 +50,13 @@ public class VisPanel extends JPanel
 				g2d.drawString(S, 5, 12);
 			}
 			//печать сообщения с количеством элементов.
-			g2d.drawString(PanelArray.length+NumberofElements, (int) (getWidth()-fontsize*6.54), fontsize-2); //6,54 - коэфициент ширины символа от размера шрифта (экспериментально) 
+			g2d.drawString(PanelArray.length+NumberofElements, (int) (getWidth()-fontsize*4.54), fontsize-2); //6,54 - коэфициент ширины символа от размера шрифта (экспериментально) 
 		    //поиск максимума
 			int max=PanelArray[0].I;   //начальное условие для поиска максимального элемента в массиве (чтобы определить масштаб)
 		    for(int i = 1;i < PanelArray.length; i++)
 		        if(PanelArray[i].I > max)
 		        	max = PanelArray[i].I; //поиск максимального элемента
-		    int k=(getHeight()-5)/max; //вычисляем масштаб - высота сцены минус запас 5px и делим это все на максимальное значение
+		    int k=(getHeight()-45)/max; //вычисляем масштаб - высота сцены минус запас 5px и делим это все на максимальное значение
 		    for(int i=0;i<PanelArray.length;i++) 
 		    {
 			    // drawing axis

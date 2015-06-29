@@ -130,7 +130,7 @@ public class GenerationParam extends JDialog implements ActionListener {
 			// Создаем лейбл + спин
 			label1 = new JLabel("Задайте размер массива");
 			SpinnerModel model =
-			        new SpinnerNumberModel(10, //initial value
+			        new SpinnerNumberModel(100, //initial value
 			                               1, //min
 			                               Data.const_max, //max
 			                               1); //step
@@ -146,7 +146,7 @@ public class GenerationParam extends JDialog implements ActionListener {
 			spin1 = new JSpinner(model1);
 			//spin.addChangeListener(listener);			
 			SpinnerModel model2 =
-			        new SpinnerNumberModel(200, //initial value
+			        new SpinnerNumberModel(300, //initial value
 			                               1, //min
 			                               Integer.MAX_VALUE, //max
 			                               1); //step
