@@ -21,8 +21,6 @@ public class Data
 	//окошко выбора сортировки
 	String b_Insertion_txt = "Сортировка вставками";
 	String b_Merge_txt = "Сортировка слиянием";
-	String b_Insertion_step_txt = "Сортировка вставками (пошагово)";
-	String b_Merge_step_txt = "Сортировка слиянием(пошагово)";
     static final int const_max = 1100;
 	Data() 
 	{

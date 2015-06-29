@@ -78,7 +78,7 @@ public class SortEngine extends JFrame implements ActionListener {
 					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
     			}
 	    		this.dialogChSort = new ChooseSorting(this, dataEngine);
-	        	int x = this.dialogChSort.executeSort();
+	        	int x = this.dialogChSort.executeSort();	        	
 	    		switch(x)
 	    			{
 	    			case 1:
