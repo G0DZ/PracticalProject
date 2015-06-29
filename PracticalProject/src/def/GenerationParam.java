@@ -7,8 +7,8 @@ import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.util.Random;
 
+import java.util.Random;
 import java.io.File;
 
 public class GenerationParam extends JDialog implements ActionListener {
@@ -63,8 +63,7 @@ public class GenerationParam extends JDialog implements ActionListener {
 		mode= md;
 // РЕЖИМ 1
 		if (mode == 1) {
-	    	// Создаем тектовое поле и 2 кнопочки
-			// Создаем текстовое поле размером в 50 колоннок
+			// Лэйбл и спик
 			label1 = new JLabel("Задайте размер массива");
 			SpinnerModel model =
 			        new SpinnerNumberModel(1, //initial value
@@ -74,50 +73,41 @@ public class GenerationParam extends JDialog implements ActionListener {
 			spin = new JSpinner(model);
 			spin.addChangeListener(listener);			
 			
+			// Лейбл + строка ввода + 2 кнопки
 			label2 = new JLabel("Введите элементы массива через пробел");		
-		    displayField = new JTextField(50);
+		    displayField = new JTextField(100);
 		    button_OK = new JButton(data.b_OK_txt);
 		    button_cancel = new JButton(data.b_cancel_txt);
+		    
+		    label_space = new JLabel("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 	     	
 	        // Назначаем кнопочкам слушателей
 	    	button_cancel.addActionListener(this);
 	    	button_OK .addActionListener(this);
 	
-	    	// Добавляем кнопочки на панель и тектовое поле тоже добавим-ка
-	    	p1 = new JPanel();
-	    	GroupLayout grl = new GroupLayout(p1);
-	    	p1.setLayout(grl);
-	    	grl.setHorizontalGroup(
-	    			grl.createSequentialGroup()
-	    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-	    			    		.addComponent(label1)
-	    	    			    .addComponent(spin)
-	    	    			    .addComponent(label2)
-	    	    			    .addComponent(displayField))
-	    			);
-	    	grl.setVerticalGroup(
-	    			grl.createSequentialGroup()
-	    						.addComponent(label1)
-	    	    			    .addComponent(spin)
-	    	    			    .addComponent(label2)
-	    	    			    .addComponent(displayField)
-	    				  
-	    			);  	
+	    	// Добавляем кнопочки на панель
+			p1 = new JPanel();
+			p1.setLayout(null);
+			label1.setBounds(20, 20, 150, 20);
+			spin.setBounds(200, 20, 50, 30);
+			label2.setBounds(20, 50, 250, 30);
+			displayField.setBounds(20, 90, 400, 30);
+			label_space.setBounds(20, 125, 400, 20);
+			button_OK.setBounds(40, 150, 150, 30);
+			button_cancel.setBounds(250, 150, 150, 30);
+			
+			p1.add(label1);
+			p1.add(spin);
+			p1.add(label2);
+			p1.add(displayField);
+			p1.add(label_space);
+			p1.add(button_OK);
+			p1.add(button_cancel);
+			
+			getContentPane().add(p1);
+			setPreferredSize(new Dimension(440, 220));
 	    	
-	    	p2 = new JPanel();
-	    	FlowLayout fl2 = new FlowLayout();
-	    	p2.setLayout(fl2);
-	    	p2.add(button_OK);
-	    	p2.add(button_cancel);
-	    	
-	    	allP = new JPanel();
-	    	BorderLayout allL = new BorderLayout();
-	    	allP.setLayout(allL);
-	    	allP.add("North",p1);
-	    	allP.add("Center",p2);   	
-	    	
-	      	this.add(allP);
-	    		
+	      	this.add(p1); 		
 	    	// Сделать размер окна подходящим
 	        this.pack();
 	    	// Запрет на изменение размера экрана
@@ -165,7 +155,34 @@ public class GenerationParam extends JDialog implements ActionListener {
 			// Назначаем кнопочкам слушателей
 			button_cancel.addActionListener(this);
 			button_OK .addActionListener(this);
+			
+			 label_space = new JLabel("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+			
+			// Добавляем кнопочки на панель
+			p1 = new JPanel();
+			p1.setLayout(null);
+			label1.setBounds(20, 20, 150, 20);
+			spin.setBounds(200, 20, 50, 30);
+			label2.setBounds(20, 50, 400, 30);
+			spin1.setBounds(200, 90, 50, 30);
+			spin2.setBounds(270, 90, 50, 30);
+			label_space.setBounds(20, 130, 400, 20);
+			button_OK.setBounds(40, 155, 150, 30);
+			button_cancel.setBounds(250, 155, 150, 30);
+					
+			p1.add(label1);
+			p1.add(spin);
+			p1.add(label2);
+			p1.add(spin1);
+			p1.add(spin2);
+			p1.add(label_space);
+			p1.add(button_OK);
+			p1.add(button_cancel);
 						
+			getContentPane().add(p1);
+			setPreferredSize(new Dimension(440, 225));
+
+			/*			
 			// Добавляем кнопочки на панель и тектовое поле тоже добавим-ка
 			p1 = new JPanel();
 			GroupLayout grl = new GroupLayout(p1);
@@ -205,9 +222,9 @@ public class GenerationParam extends JDialog implements ActionListener {
 			    BorderLayout allL = new BorderLayout();
 			    allP.setLayout(allL);
 			    allP.add("North",p1);
-			    allP.add("Center",p2);   	
+			    allP.add("Center",p2);  */ 	
 			    
-			     this.add(allP);
+			    this.add(p1);
 			    		
 			    // Сделать размер окна подходящим
 			    this.pack();
