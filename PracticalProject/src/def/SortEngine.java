@@ -2,6 +2,7 @@ package def;
 import def.SortAlgorithms.InsertionSort;
 import def.SortAlgorithms.MergeSort;
 import def.SortAlgorithms.Check;
+
 import java.awt.event.ActionListener; 
 import java.awt.event.ActionEvent;
 
@@ -15,7 +16,7 @@ public class SortEngine extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	Sort parent; // ссылка на Sort
 	private Generation dialogGen = null; //сслыка, пока пустая, на объект дочернего окна
-	private ChooseSorting dialogChSort = null; //сслыка, пока пустая, на объект дочернего окна
+	//private ChooseSorting dialogChSort = null; //сслыка, пока пустая, на объект дочернего окна
 	Data dataEngine;
 	boolean haveBeenLoad;
 	InsertionSort IS;
@@ -50,6 +51,9 @@ public class SortEngine extends JFrame implements ActionListener {
 	    		}
 	    		else 
 	    		{
+	    			Sort.button_start_sort.setEnabled(true);
+	    			Sort.button_check.setEnabled(true);
+	    			Sort.button_save.setEnabled(true);
 	    			parent.vpanel.PanelArray = new ColorInt[dataEngine.array.length];
 	    			for (int i = 0; i < dataEngine.array.length; i++)
 	    			{
@@ -71,14 +75,30 @@ public class SortEngine extends JFrame implements ActionListener {
     		if (haveBeenLoad)
     		{
     			Sort.button_check.setEnabled(false);
+    			Sort.button_save.setEnabled(false);
+    			Sort.button_revival.setEnabled(false);
+    			Sort.button_input.setEnabled(false);
     			parent.vpanel.PanelArray = new ColorInt[dataEngine.array.length];
     			for (int i = 0; i < dataEngine.array.length; i++)
     			{
     				parent.vpanel.PanelArray[i] = new ColorInt();
 					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
     			}
-	    		this.dialogChSort = new ChooseSorting(this, dataEngine);
-	        	int x = this.dialogChSort.executeSort();	        	
+	    		//this.dialogChSort = new ChooseSorting(this, dataEngine);
+    			//int x = this.dialogChSort.executeSort();
+    			int x = 0;
+    			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_ins_s.isSelected()))
+    				x = 1;
+    			if ((Sort.r_step_mode.isSelected()) && (Sort.r_ins_s.isSelected())) {
+    				x = 11;
+    				Sort.button_make_step.setEnabled(true);
+    			}
+    			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_mer_s.isSelected()))
+    				x = 2;
+    			if ((Sort.r_step_mode.isSelected()) && (Sort.r_mer_s.isSelected())) {
+    				x = 22;	
+    				Sort.button_make_step.setEnabled(true);
+    			}
 	    		switch(x)
 	    			{
 	    			case 1:
@@ -120,6 +140,7 @@ public class SortEngine extends JFrame implements ActionListener {
 				parent.vpanel.SortName = null; //главное - не забыть, что сортировки нет, и убрать ее имя.
 				parent.vpanel.repaint();
 				JOptionPane.showMessageDialog(this, "Исходный массив восстановлен!"," ", JOptionPane.INFORMATION_MESSAGE);
+				Sort.button_start_sort.setEnabled(true);
     		}
     		else
     		{

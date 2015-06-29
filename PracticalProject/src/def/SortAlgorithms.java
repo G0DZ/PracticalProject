@@ -86,6 +86,11 @@ public class SortAlgorithms
 			parent.vpanel.SortName = null; //убираем у сортировки название
 			JOptionPane.showMessageDialog(parent, "Сортировка вставками завершена!"," ", JOptionPane.INFORMATION_MESSAGE);
 			Sort.button_check.setEnabled(true);
+			Sort.button_save.setEnabled(true);
+			Sort.button_revival.setEnabled(true);
+			Sort.button_input.setEnabled(true);
+			Sort.button_start_sort.setEnabled(false);
+			Sort.button_make_step.setEnabled(false);
 	    }
 		
 		private void InsSort()
@@ -162,6 +167,11 @@ public class SortAlgorithms
 			parent.vpanel.SortName = null; //убираем у сортировки название
 			JOptionPane.showMessageDialog(parent, "Сортировка слиянием завершена!"," ", JOptionPane.INFORMATION_MESSAGE);
 			Sort.button_check.setEnabled(true);
+			Sort.button_save.setEnabled(true);
+			Sort.button_revival.setEnabled(true);
+			Sort.button_input.setEnabled(true);
+			Sort.button_start_sort.setEnabled(false);
+			Sort.button_make_step.setEnabled(false);
 	    }
 		
 		private void MergeSorting(ColorInt[] arr, int l, int r)

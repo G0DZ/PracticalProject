@@ -12,18 +12,19 @@ public class Sort extends JFrame {
 	// Объявление компонент
 	JPanel p1;
 	VisPanel vpanel;
-	JButton button_input;
-	JButton button_start_sort;
-	JButton button_make_step;
+	static JButton button_input;
+	static JButton button_start_sort;
+	static JButton button_make_step;
 	static JButton button_check;
-	JButton button_save;
-	JButton button_revival;
+	static JButton button_save;
+	static JButton button_revival;
 	static JRadioButton r_demo_mode;
 	static JRadioButton r_step_mode;
 	JLabel label_opt_for_mode;
 	static JRadioButton r_ins_s;
 	static JRadioButton r_mer_s;
 	JLabel label_opt_for_sort;
+	JLabel label_posib;
 
 
     // Конструктор нам все нарисует как надо
@@ -74,6 +75,7 @@ public class Sort extends JFrame {
         group_s.add(r_ins_s);
         group_s.add(r_mer_s);		
         label_opt_for_sort = new JLabel("Выбор сортировки");
+        label_posib = new JLabel("Дополнительные возможности");
         
     	// Добавляем кнопочки на панель
 		p1 = new JPanel();
@@ -87,11 +89,12 @@ public class Sort extends JFrame {
 		label_opt_for_sort.setBounds(220,  505,  250,  25);
 		r_ins_s.setBounds(220, 530, 150, 25);
 		r_mer_s.setBounds(220, 550, 150, 25);		
-		button_start_sort.setBounds(510, 440, 150, 30);
-		button_make_step.setBounds(510, 500, 150, 30);		
-		button_check.setBounds(700, 440, 150, 30);
-		button_save.setBounds(700, 500, 150, 30);
-		button_revival.setBounds(700, 550, 150, 30);
+		button_start_sort.setBounds(440, 460, 180, 80);
+		button_make_step.setBounds(750, 450, 150, 30);		
+		button_check.setBounds(945, 460, 150, 30);
+		button_save.setBounds(945, 500, 150, 30);
+		button_revival.setBounds(945, 540, 150, 30);
+		label_posib.setBounds(930, 425, 200, 30);
 			
 		p1.add(vpanel);
 		p1.add(button_input);
@@ -106,7 +109,15 @@ public class Sort extends JFrame {
 		p1.add(button_check);
 		p1.add(button_save);
 		p1.add(button_revival);
-					
+		p1.add(label_posib);
+		
+		// В начале блокируем все кнопки, кроме одной 
+		button_start_sort.setEnabled(false);
+    	button_make_step.setEnabled(false);
+    	button_check.setEnabled(false);
+    	button_save.setEnabled(false);
+    	button_revival.setEnabled(false);
+		
 		getContentPane().add(p1);
 		setPreferredSize(new Dimension(1145, 610));
     	 	
