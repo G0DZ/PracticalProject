@@ -10,11 +10,16 @@ import java.util.Scanner;
 
 public class Generation extends JDialog implements ActionListener {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel windowGeneration;
 	JButton button_file;
     JButton button_string;
     JButton button_auto;
     JButton button_cancel;
+    JLabel label_space;
     Data dataGen;
 	private boolean result; // результат работы окна (true - нажатие кнопки OK, false - нажатие кнопки Отмена);
 	// А это для дочернего процесса дочернего
@@ -30,6 +35,7 @@ public class Generation extends JDialog implements ActionListener {
 		button_string = new JButton(dataGen.b_string_txt);
 		button_auto = new JButton(dataGen.b_auto_txt);
 		button_cancel = new JButton(dataGen.b_cancel_txt);
+		label_space = new JLabel("- - - - - - - - - - - - - - - - - - - - -");		
 		
 	    // Назначаем кнопочкам слушателей
 		button_file.addActionListener(this);
@@ -37,32 +43,25 @@ public class Generation extends JDialog implements ActionListener {
 		button_auto.addActionListener(this);
 		button_cancel.addActionListener(this);
 
-				
 		// Добавляем кнопочки на панель
 		windowGeneration = new JPanel();
-		GroupLayout grl = new GroupLayout(windowGeneration);
-		windowGeneration.setLayout(grl);
-		// Automatic gap insertion:
-		grl.setAutoCreateGaps(true);
-    	grl.setAutoCreateContainerGaps(true); 	
-    	grl.setHorizontalGroup(
-    			grl.createSequentialGroup()
-    			      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-    			    		.addComponent(button_file)
-    	    			    .addComponent(button_string)
-    	    			    .addComponent(button_auto)
-    	    			    .addComponent(button_cancel))
-    			);
-    	grl.setVerticalGroup(
-    			grl.createSequentialGroup()
-    				  .addComponent(button_file)
-    	    		  .addComponent(button_string)
-    	    		  .addComponent(button_auto)
-    	    		  .addComponent(button_cancel)
-    			);
-
-		this.add(windowGeneration);
+		windowGeneration.setLayout(null);
+		button_file.setBounds(20, 20, 150, 30);
+		button_string.setBounds(20, 60, 150, 30);
+		button_auto.setBounds(20, 100, 150, 30);
+		label_space.setBounds(20, 130, 150, 30);
+		button_cancel.setBounds(20, 160, 150, 30);
 		
+		windowGeneration.add(button_file);
+		windowGeneration.add(button_string);
+		windowGeneration.add(button_auto);
+		windowGeneration.add(label_space);
+		windowGeneration.add(button_cancel);
+		
+		getContentPane().add(windowGeneration);
+		setPreferredSize(new Dimension(190, 230));
+		
+		this.add(windowGeneration);
 		// Сделать размер окна подходящим
         this.pack();
 	    // Запрет на изменение размера экрана
@@ -89,8 +88,10 @@ public class Generation extends JDialog implements ActionListener {
 		   	int size = 0;
 		   	if (in.hasNextInt()) 
 		   		size =  in.nextInt();
-		   	else 
+		   	else {
+		   		in.close();
 		   		return false;
+		   	}
 		   	dataGen.array = new int[size];
 		   	if (in.hasNextInt()) {
 				while(in.hasNextInt()){
@@ -100,8 +101,10 @@ public class Generation extends JDialog implements ActionListener {
 				in.close();
 				return true;
 		   	}
-		   	else
+		   	else {
+		   		in.close();
 		   		return false;
+		   	}
 	    }
 	    catch (FileNotFoundException ex) {
 	    	return false;
