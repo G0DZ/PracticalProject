@@ -92,12 +92,14 @@ public class SortEngine extends JFrame implements ActionListener {
     			if ((Sort.r_step_mode.isSelected()) && (Sort.r_ins_s.isSelected())) {
     				x = 11;
     				Sort.button_make_step.setEnabled(true);
+    				Sort.button_start_sort.setEnabled(false);
     			}
     			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_mer_s.isSelected()))
     				x = 2;
     			if ((Sort.r_step_mode.isSelected()) && (Sort.r_mer_s.isSelected())) {
     				x = 22;	
     				Sort.button_make_step.setEnabled(true);
+    				Sort.button_start_sort.setEnabled(false);
     			}
 	    		switch(x)
 	    			{

@@ -25,7 +25,7 @@ public class Sort extends JFrame {
 	static JRadioButton r_mer_s;
 	JLabel label_opt_for_sort;
 	JLabel label_posib;
-
+	JLabel label_option_step;
 
     // Конструктор нам все нарисует как надо
     @SuppressWarnings("deprecation")
@@ -76,6 +76,7 @@ public class Sort extends JFrame {
         group_s.add(r_mer_s);		
         label_opt_for_sort = new JLabel("Выбор сортировки");
         label_posib = new JLabel("Дополнительные возможности");
+        label_option_step = new JLabel("Дополнительные параметры");
         
     	// Добавляем кнопочки на панель
 		p1 = new JPanel();
@@ -90,12 +91,13 @@ public class Sort extends JFrame {
 		r_ins_s.setBounds(220, 530, 150, 25);
 		r_mer_s.setBounds(220, 550, 150, 25);		
 		button_start_sort.setBounds(440, 460, 180, 80);
-		button_make_step.setBounds(750, 450, 150, 30);		
+		button_make_step.setBounds(680, 460, 150, 30);		
 		button_check.setBounds(945, 460, 150, 30);
 		button_save.setBounds(945, 500, 150, 30);
 		button_revival.setBounds(945, 540, 150, 30);
 		label_posib.setBounds(930, 425, 200, 30);
-			
+		label_option_step.setBounds(670, 425, 200, 30);	
+		
 		p1.add(vpanel);
 		p1.add(button_input);
 		p1.add(label_opt_for_mode);
@@ -110,6 +112,7 @@ public class Sort extends JFrame {
 		p1.add(button_save);
 		p1.add(button_revival);
 		p1.add(label_posib);
+		p1.add(label_option_step);
 		
 		// В начале блокируем все кнопки, кроме одной 
 		button_start_sort.setEnabled(false);
