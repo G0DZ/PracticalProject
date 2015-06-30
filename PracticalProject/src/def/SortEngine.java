@@ -74,6 +74,7 @@ public class SortEngine extends JFrame implements ActionListener {
     	{ //если это кнопка "Запуск сортировки"   		
     		if (haveBeenLoad)
     		{
+    			Sort.button_start_sort.setEnabled(false);
     			Sort.button_check.setEnabled(false);
     			Sort.button_save.setEnabled(false);
     			Sort.button_revival.setEnabled(false);

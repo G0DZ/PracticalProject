@@ -48,7 +48,7 @@ public class SortAlgorithms
 				}
 				parent.vpanel.PanelArray[i].InColor = Color.GREEN;
 				try {
-	    			sleep(10);
+	    			sleep(100);
 	    		} catch (InterruptedException e) {
 	    			e.printStackTrace();
 	    		}
@@ -113,7 +113,7 @@ public class SortAlgorithms
 		    		}
 		    		parent.vpanel.repaint();
 		        	try {
-		    			sleep(10);
+		    			sleep(100);
 		    		} catch (InterruptedException e) {
 		    			e.printStackTrace();
 		    		}
