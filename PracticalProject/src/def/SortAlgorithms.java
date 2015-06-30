@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JOptionPane;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 public class SortAlgorithms
 {
 	public static class Check extends Thread
@@ -186,7 +188,7 @@ public class SortAlgorithms
 			parent.vpanel.reInitComponents(); //обнуляем значения
 			parent.vpanel.SortName = " слиянием"; //даем сортировке название.
 			parent.vpanel.repaint();
-			MergeSorting(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1);
+			MergeSorting(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1,0);
 			//действия после работы потока.
 			parent.vpanel.reInitComponents(); //обнуляем значения
 			parent.vpanel.SortName = null; //убираем у сортировки название
@@ -200,7 +202,7 @@ public class SortAlgorithms
 			Sort.button_make_step.setEnabled(false);
 	    }
 		
-		private void MergeSorting(ColorInt[] arr, int l, int r)
+		private void MergeSorting(ColorInt[] arr, int l, int r, int lforprint)
 		{	
 			synchronized (this) 
 			{
@@ -208,9 +210,10 @@ public class SortAlgorithms
 		    if(l >= r) return;
 		    int m = (l + r)/2;
 		    //! Рекурсивная сортировка полученных массивов
-		    MergeSorting(arr, l, m);
-		    MergeSorting(arr, m+1, r);
-		    MergeS(arr, l, r, m);
+		    MergeSorting(arr, l, m,lforprint);
+		    MergeSorting(arr, m+1, r,l);
+		    MergeS(arr, l, r, m, lforprint);
+		    
 			if(!isForce)
 			{
 				sleepSort();
@@ -218,7 +221,7 @@ public class SortAlgorithms
 		}
 		}
 		
-		private void MergeS(ColorInt[] arr, int l, int r, int m)
+		private void MergeS(ColorInt[] arr, int l, int r, int m, int lforprint)
 		{
 
 		    int j, start, fin;
@@ -235,6 +238,24 @@ public class SortAlgorithms
 		    {
 		        arr[j].I=mas[j];
 				parent.vpanel.ACInt++; //доступ к массиву
+		    }
+		    for (int k=0; k < lforprint; k++)
+			{
+				parent.vpanel.PanelArray[k].InColor = Color.DARK_GRAY;
+			}
+		    for (int k=lforprint; k < l; k++)
+		    {
+		    	parent.vpanel.PanelArray[k].InColor = Color.GREEN;
+		    }
+		    for(int i = l; i <= r; i++)
+		    {
+		    	if(i <= m)
+		    		parent.vpanel.PanelArray[i].InColor = Color.CYAN;
+		    	else
+		    		//if(i == m+1)
+		    			//parent.vpanel.PanelArray[i].InColor = Color.RED;
+		    		//else
+		    			parent.vpanel.PanelArray[i].InColor = Color.YELLOW;
 		    }
 			parent.vpanel.ACInt+=3; //3 доступа к массиву
 			parent.vpanel.CompInt+=3; // 3 сравнения
