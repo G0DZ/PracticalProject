@@ -3,12 +3,12 @@ import def.SortAlgorithms.InsertionSort;
 import def.SortAlgorithms.MergeSort;
 import def.SortAlgorithms.Check;
 
-import java.awt.event.ActionListener; 
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.event.*;
 
-public class SortEngine extends JFrame implements ActionListener {
+public class SortEngine extends JFrame implements ActionListener, ChangeListener {
  
 	/**
 	 * 
@@ -27,6 +27,15 @@ public class SortEngine extends JFrame implements ActionListener {
     SortEngine(Sort parent, Data data){
     	this.parent = parent;
     	dataEngine = data;
+    }
+    
+    public void stateChanged(ChangeEvent e) {
+        JSlider source = (JSlider)e.getSource();
+        if (!source.getValueIsAdjusting()) {
+            int fps = (int)source.getValue();
+            // Пока что тупо вывод в консоль
+            System.out.println(fps);
+        }
     }
         	
     public void actionPerformed(ActionEvent e) {

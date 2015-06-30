@@ -1,7 +1,7 @@
 package def;
-import javax.swing.*;
 
 import java.awt.*;
+import javax.swing.*;
 
 public class Sort extends JFrame {
 
@@ -13,8 +13,8 @@ public class Sort extends JFrame {
 	static final int FPS_MAX = 500;
 	static final int FPS_INIT = 100;    //initial frames per second
 	// Объявление компонент
-	static JPanel p1;
-	static VisPanel vpanel;
+	JPanel p1;
+	VisPanel vpanel;
 	static JButton button_input;
 	static JButton button_start_sort;
 	static JButton button_make_step;
@@ -29,8 +29,8 @@ public class Sort extends JFrame {
 	static JLabel label_opt_for_sort;
 	static JLabel label_posib;
 	static JLabel label_option_step;
-	static JProgressBar progressBar;
-	static JSlider framesPerSecond;
+	JProgressBar progressBar;
+	JSlider slider;
 
     // Конструктор нам все нарисует как надо
     @SuppressWarnings("deprecation")
@@ -89,14 +89,13 @@ public class Sort extends JFrame {
 		progressBar.setStringPainted(true);
 		//progressBar.setValue(80);
 		
-		framesPerSecond = new JSlider(JSlider.HORIZONTAL, FPS_MIN, FPS_MAX, FPS_INIT);
-		//framesPerSecond.addChangeListener(this);
-		
-		//Turn on labels at major tick marks.
-		framesPerSecond.setMajorTickSpacing(10);
-		framesPerSecond.setMinorTickSpacing(1);
-		framesPerSecond.setPaintTicks(true);
-		framesPerSecond.setPaintLabels(true);
+        slider = new JSlider(JSlider.HORIZONTAL, FPS_MIN, FPS_MAX, FPS_INIT);
+        slider.setMajorTickSpacing(100);
+        slider.setMinorTickSpacing(20);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        Font font = new Font("Calibri", Font.PLAIN, 14);
+        slider.setFont(font);
         
     	// Добавляем кнопочки на панель
 		p1 = new JPanel();
@@ -104,21 +103,21 @@ public class Sort extends JFrame {
 		
 		vpanel.setBounds(0, 0, 1145, 400);
 		progressBar.setBounds(0, 400, 1145, 25);	
-		button_input.setBounds(20,440,180,80);
-		label_opt_for_mode.setBounds(220,  425,  250,  25);
-		r_demo_mode.setBounds(220, 450, 150, 25);
-		r_step_mode.setBounds(220, 470, 150, 25);			
-		label_opt_for_sort.setBounds(220,  505,  250,  25);
-		r_ins_s.setBounds(220, 530, 150, 25);
-		r_mer_s.setBounds(220, 550, 150, 25);		
-		button_start_sort.setBounds(440, 460, 180, 80);
-		button_make_step.setBounds(680, 460, 150, 30);		
-		framesPerSecond.setBounds(680,520, 150, 50);
+		button_input.setBounds(20,440,180,50);
+		label_opt_for_mode.setBounds(210,  425,  250,  25);
+		r_demo_mode.setBounds(210, 450, 150, 25);
+		r_step_mode.setBounds(210, 470, 150, 25);			
+		label_opt_for_sort.setBounds(210,  505,  250,  25);
+		r_ins_s.setBounds(210, 530, 150, 25);
+		r_mer_s.setBounds(210, 550, 150, 25);		
+		button_start_sort.setBounds(20,510,180,50);
+		button_make_step.setBounds(600, 470, 150, 30);		
+		slider.setBounds(480,520, 400, 50);
 		button_check.setBounds(945, 460, 150, 30);
 		button_save.setBounds(945, 540, 150, 30);
 		button_revival.setBounds(945, 500, 150, 30);
 		label_posib.setBounds(930, 425, 200, 30);
-		label_option_step.setBounds(670, 425, 200, 30);	
+		label_option_step.setBounds(590, 425, 200, 30);	
 		
 		p1.add(vpanel);
 		p1.add(progressBar);
@@ -131,7 +130,7 @@ public class Sort extends JFrame {
 		p1.add(r_mer_s);		
 		p1.add(button_start_sort);
 		p1.add(button_make_step);
-		p1.add(framesPerSecond);
+		p1.add(slider);
 		p1.add(button_check);
 		p1.add(button_save);
 		p1.add(button_revival);
@@ -155,6 +154,7 @@ public class Sort extends JFrame {
 		button_check.addActionListener(sEngine);
 		button_make_step.addActionListener(sEngine);
 		button_revival.addActionListener(sEngine);
+		slider.addChangeListener(sEngine);
 		  
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
@@ -170,5 +170,8 @@ public class Sort extends JFrame {
         this.setLocation(center);
 		// Отображаю окно 
         this.setVisible(true);
-     }       
+     } 
+    
+   
+    
 }
