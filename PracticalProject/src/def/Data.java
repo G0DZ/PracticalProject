@@ -5,7 +5,6 @@ public class Data
 	int[] array;
 	
 	String f_Sort_txt = "Сортировка";
-
 	String b_input_txt = "Ввод исходных данных";
 	String b_start_sort_txt = "Запуск сортировки";
 	String b_make_step_txt = "Сделать шаг";
@@ -26,4 +25,5 @@ public class Data
 	{
 		
 	}
+	
 }

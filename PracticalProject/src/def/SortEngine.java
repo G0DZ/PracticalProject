@@ -187,8 +187,12 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
 			int userSelection = fileChooser.showSaveDialog(this);			 
 			if (userSelection == JFileChooser.APPROVE_OPTION) {
 			    File fileToSave = fileChooser.getSelectedFile();
-			    fileToSave = FileWorker.write(fileToSave, "Ололо");
-			    //System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+			    String str_temp = "";
+			    for (int schet = 0; schet < parent.vpanel.PanelArray.length; schet++) {
+			    	str_temp = str_temp + parent.vpanel.PanelArray[schet].I + " "; 
+			    }
+			    str_temp = parent.vpanel.PanelArray.length + "\n" + str_temp;
+			    fileToSave = FileWorker.write(fileToSave, str_temp);
 			} 			      	
     	}
     }

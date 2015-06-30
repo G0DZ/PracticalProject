@@ -161,20 +161,15 @@ public class Sort extends JFrame {
 		slider.addChangeListener(sEngine);
 		
 		// Подключаем всплывающие подсказки
-		
-
-	
-	
-		
 		vpanel.setToolTipText("Визуализация сортировки");
 		progressBar.setToolTipText("Прогресс сортировки");
 		slider.setToolTipText("Задержка отрисовки");
-		button_input.setToolTipText("Нажми для ввода исходных данных из файла, строки ввода или автоматически с заданием параметров генерации");
-		button_start_sort.setToolTipText("Нажми для запуска сортировки (кнопка доступна при наличии исходных данных)");
-		button_make_step.setToolTipText("Нажми, чтобы сделать шаг алгоритма (кнопка доступна только в пошаговом режиме)");		
-		button_check.setToolTipText("Нажми для проверки массива на упорядоченность по неубыванию");
-		button_save.setToolTipText("Нажми для сохранения отсортированного массива в файл 'result.txt' ");
-		button_revival.setToolTipText("Нажми для восстановления исходных данных");
+		button_input.setToolTipText("<HTML>Нажми для ввода исходных данных <br>из файла, строки ввода или автоматически <br>с заданием параметров генерации");
+		button_start_sort.setToolTipText("<HTML>Нажми для запуска сортировки (кнопка <br>доступна при наличии исходных данных)");
+		button_make_step.setToolTipText("<HTML>Нажми, чтобы сделать шаг алгоритма (кнопка <br>доступна только в пошаговом режиме)");		
+		button_check.setToolTipText("<HTML>Нажми для проверки массива <br>на упорядоченность по неубыванию");
+		button_save.setToolTipText("<HTML>Нажми для сохранения отсортированного <br>массива ");
+		button_revival.setToolTipText("<HTML>Нажми для восстановления <br>исходных данных");
 	    ToolTipManager.sharedInstance().setInitialDelay(0);		
 		  
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
