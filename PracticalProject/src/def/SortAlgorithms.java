@@ -69,6 +69,8 @@ public class SortAlgorithms
 	{
 		Sort parent;
 		boolean isForce;
+		public int SleepTime;
+		public int Progress;
 		InsertionSort(Sort S, boolean method)
 		{
 			parent = S;
@@ -95,24 +97,46 @@ public class SortAlgorithms
 		
 		private void InsSort()
 		{
-	    	int i, j, temp;
+	    	int i, j;
+			ColorInt temp;
 			for (i = 1; i < parent.vpanel.PanelArray.length; i++)
 	    	{
+				Progress = i;
 	    		synchronized (this)
 	    		{
-		    		temp = parent.vpanel.PanelArray[i].I;
+	    			for (int k=0; k < i; k++)
+	    			{
+	    				parent.vpanel.PanelArray[k].InColor = Color.WHITE;
+	    			}
+		    		temp = parent.vpanel.PanelArray[i]; //текущий элемент это temp
+		    		parent.vpanel.PanelArray[i].InColor = Color.RED; // мы рассматриваем его, значит мен€ем на красный цвет.
+		    		if(i != parent.vpanel.PanelArray.length-1)
+		    			parent.vpanel.PanelArray[i+1].InColor = Color.yellow;
+		    		boolean swapyet = false;
 		    		for (j = i - 1; j >= 0; j--)
-		    		{
-	    				parent.vpanel.ACInt+=2; //2 доступа к массиву
+		    		{ //будем сравнивать со всеми предыдущими.
+	    				parent.vpanel.ACInt+=1; //ƒоступ к массиву
 		    			parent.vpanel.CompInt+=1; //одно сравнение
-		    			if (parent.vpanel.PanelArray[j].I < temp)
-		    				break;
-		    			parent.vpanel.PanelArray[j + 1].I = parent.vpanel.PanelArray[j].I;
-		    			parent.vpanel.PanelArray[j].I = temp;
+		    			if (parent.vpanel.PanelArray[j].I < temp.I) //сравниваем предыдущий с текущим.
+		    			{
+		    				for (int k=0; k <= j; k++)
+			    			{
+			    				parent.vpanel.PanelArray[k].InColor = Color.CYAN;
+			    			}	    			
+		    				break; //и выходим, если temp больше.
+		    			}
+		    			if(!swapyet)
+		    				swapyet = true;
+		    			parent.vpanel.PanelArray[j + 1] = parent.vpanel.PanelArray[j];
+		    			parent.vpanel.PanelArray[j] = temp;
 		    			parent.vpanel.ACInt+=3; //еще 3 доступа.
 		    		}
+		    		for(int k = i; k > j+1; k--)
+		    			parent.vpanel.PanelArray[k].InColor = Color.GREEN;
+		    		
+    				parent.vpanel.ACInt+=1; //ƒоступ к массиву
 		    		parent.vpanel.repaint();
-		        	try {
+		    		try {
 		    			sleep(100);
 		    		} catch (InterruptedException e) {
 		    			e.printStackTrace();
@@ -149,6 +173,8 @@ public class SortAlgorithms
 	{
 		Sort parent;
 		boolean isForce;
+		public int SleepTime;
+		public int Progress;
 		MergeSort(Sort S, boolean method)
 		{
 			parent = S;
