@@ -185,62 +185,20 @@ public class GenerationParam extends JDialog implements ActionListener {
 						
 			getContentPane().add(p1);
 			setPreferredSize(new Dimension(440, 225));
-
-			/*			
-			// Добавляем кнопочки на панель и тектовое поле тоже добавим-ка
-			p1 = new JPanel();
-			GroupLayout grl = new GroupLayout(p1);
-			p1.setLayout(grl);
-			grl.setHorizontalGroup(
-					grl.createSequentialGroup()
-					      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-					    		.addComponent(label1)
-					    		.addComponent(label2))
-			    	      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-			    	    		.addComponent(spin)
-						    	.addComponent(spin1)
-						    	.addComponent(label_space))
-			    	      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-			    	    		  .addComponent(spin2))
-					);
-			grl.setVerticalGroup(
-					grl.createSequentialGroup()
-					      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-					    		.addComponent(label1)
-					    		.addComponent(spin))
-					      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-					            .addComponent(label_space))
-			    	      .addGroup(grl.createParallelGroup(GroupLayout.Alignment.CENTER)
-			    	    		.addComponent(label2)
-			    	    		.addComponent(spin1)
-						    	.addComponent(spin2))					  
-					);  	
-			    	
-			    p2 = new JPanel();
-			    FlowLayout fl2 = new FlowLayout();
-			    p2.setLayout(fl2);
-			    p2.add(button_OK);
-			    p2.add(button_cancel);
-			    
-			    allP = new JPanel();
-			    BorderLayout allL = new BorderLayout();
-			    allP.setLayout(allL);
-			    allP.add("North",p1);
-			    allP.add("Center",p2);  */ 	
-			    
-			    this.add(p1);
+   
+		    this.add(p1);
 			    		
-			    // Сделать размер окна подходящим
-			    this.pack();
-			    // Запрет на изменение размера экрана
-			    this.setResizable(false);		
-			    //Точка размещения экрана
-			    Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-			    int w = this.getWidth();
-			    int h = this.getHeight();
-			    center.x = center.x - w/2; 
-			    center.y = center.y - h/2;
-			    this.setLocation(center);
+		    // Сделать размер окна подходящим
+		    this.pack();
+		    // Запрет на изменение размера экрана
+		    this.setResizable(false);		
+		    //Точка размещения экрана
+		    Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
+		    int w = this.getWidth();
+		    int h = this.getHeight();
+		    center.x = center.x - w/2; 
+		    center.y = center.y - h/2;
+		    this.setLocation(center);
 		}
 	}
 	
@@ -267,7 +225,8 @@ public class GenerationParam extends JDialog implements ActionListener {
 		            dataGen.array = new int[result];	            
 		            // А теперь поехали читать массив
 			    	forArray = displayField.getText();
-			    	File file = FileWorker.write("forArray.txt", forArray);	    	
+			    	File file = new File ("forArray.txt");
+			    	file = FileWorker.write(file, forArray);	    	
 			    	try {
 					   	Scanner in = new Scanner(file);
 					   	int real_length = 0;

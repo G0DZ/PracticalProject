@@ -1,6 +1,7 @@
 package def;
 
 import java.awt.*;
+
 import javax.swing.*;
 
 public class Sort extends JFrame {
@@ -62,7 +63,7 @@ public class Sort extends JFrame {
 		button_save.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_revival.setLabel(data.b_revival_txt);
 		button_revival.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				
+		
 		r_demo_mode = new JRadioButton("Демонстрация");
 		r_demo_mode.setActionCommand("Демонстрация");
 		r_demo_mode.setSelected(true);
@@ -98,7 +99,7 @@ public class Sort extends JFrame {
         slider.setPaintLabels(true);
         Font font = new Font("Calibri", Font.PLAIN, 14);
         slider.setFont(font);
-        
+         
     	// Добавляем кнопочки на панель
 		p1 = new JPanel();
 		p1 .setLayout(null);
@@ -156,7 +157,25 @@ public class Sort extends JFrame {
 		button_check.addActionListener(sEngine);
 		button_make_step.addActionListener(sEngine);
 		button_revival.addActionListener(sEngine);
+		button_save.addActionListener(sEngine);
 		slider.addChangeListener(sEngine);
+		
+		// Подключаем всплывающие подсказки
+		
+
+	
+	
+		
+		vpanel.setToolTipText("Визуализация сортировки");
+		progressBar.setToolTipText("Прогресс сортировки");
+		slider.setToolTipText("Задержка отрисовки");
+		button_input.setToolTipText("Нажми для ввода исходных данных из файла, строки ввода или автоматически с заданием параметров генерации");
+		button_start_sort.setToolTipText("Нажми для запуска сортировки (кнопка доступна при наличии исходных данных)");
+		button_make_step.setToolTipText("Нажми, чтобы сделать шаг алгоритма (кнопка доступна только в пошаговом режиме)");		
+		button_check.setToolTipText("Нажми для проверки массива на упорядоченность по неубыванию");
+		button_save.setToolTipText("Нажми для сохранения отсортированного массива в файл 'result.txt' ");
+		button_revival.setToolTipText("Нажми для восстановления исходных данных");
+	    ToolTipManager.sharedInstance().setInitialDelay(0);		
 		  
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
@@ -173,7 +192,5 @@ public class Sort extends JFrame {
 		// Отображаю окно 
         this.setVisible(true);
      } 
-    
-   
-    
+       
 }

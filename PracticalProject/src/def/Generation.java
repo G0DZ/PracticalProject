@@ -122,7 +122,8 @@ public class Generation extends JDialog implements ActionListener {
 	    	// Отображаем диалог пользователю
 	    	// В ret заносится значение, по которому мы можем понять, что хочет пользователь
 	    	JFileChooser fileopen = new JFileChooser();             
-	    	int ret = fileopen.showDialog(null, "Открыть файл");
+	    	fileopen.setDialogTitle("Open file"); 
+			int ret = fileopen.showOpenDialog(this);
 	    	if (ret == JFileChooser.APPROVE_OPTION) {
 	    	    File file = fileopen.getSelectedFile();
 	    	    int real_length = 0;

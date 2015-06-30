@@ -19,9 +19,9 @@ public class FileWorker {
 	    }
 	}
 
-	public static File write(String fileName, String text) {
+	public static File write(File file, String text) {
 	    // Определяем файл
-	    File file = new File(fileName);
+	    //File file = new File(fileName);
 	 
 	    try {
 	        // Проверяем, что если файл не существует, то создаем его

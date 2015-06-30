@@ -8,6 +8,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import java.io.File;
+
 public class SortEngine extends JFrame implements ActionListener, ChangeListener {
  
 	/**
@@ -35,7 +37,7 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
             parent.SleepTime = (int)source.getValue();
         }
     }
-        	
+        
     public void actionPerformed(ActionEvent e) {
     	
     	// Получение источника события
@@ -177,6 +179,17 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     			IS.wakeSort();
     		if(MS != null)
     			MS.wakeSort();
+    	}
+    	if(actioncommand == dataEngine.b_save_txt)
+    	{	    		
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Save file"); 
+			int userSelection = fileChooser.showSaveDialog(this);			 
+			if (userSelection == JFileChooser.APPROVE_OPTION) {
+			    File fileToSave = fileChooser.getSelectedFile();
+			    fileToSave = FileWorker.write(fileToSave, "Ололо");
+			    //System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+			} 			      	
     	}
     }
     

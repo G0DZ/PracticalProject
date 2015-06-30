@@ -8,7 +8,7 @@ public class Data
 
 	String b_input_txt = "Ввод исходных данных";
 	String b_start_sort_txt = "Запуск сортировки";
-	String b_make_step_txt = "Шаг";
+	String b_make_step_txt = "Сделать шаг";
 	String b_check_txt = "Проверка";
 	String b_save_txt = "Сохранение";
 	String b_revival_txt = "Восстановление";
