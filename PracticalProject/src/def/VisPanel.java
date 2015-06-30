@@ -7,9 +7,10 @@ public class VisPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	private final int fontsize = 14; //размер шрифта.
-	public ColorInt[] PanelArray;
 	private int WidthCoef;
 	private int HeigthCoef;
+	
+	public ColorInt[] PanelArray;
 	
 	private String SortDef = "Сортировка: ";
 	String SortName = null;
