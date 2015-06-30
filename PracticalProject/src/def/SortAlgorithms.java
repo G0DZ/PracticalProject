@@ -138,7 +138,7 @@ public class SortAlgorithms
     				parent.vpanel.ACInt+=1; //Доступ к массиву
 		    		parent.vpanel.repaint();
 		    		try {
-		    			sleep(SleepTime);
+		    			sleep(parent.SleepTime);
 		    		} catch (InterruptedException e) {
 		    			e.printStackTrace();
 		    		}
@@ -174,8 +174,6 @@ public class SortAlgorithms
 	{
 		Sort parent;
 		boolean isForce;
-		public int SleepTime;
-		public int Progress;
 		MergeSort(Sort S, boolean method)
 		{
 			parent = S;
@@ -242,7 +240,7 @@ public class SortAlgorithms
 			parent.vpanel.CompInt+=3; // 3 сравнения
 		    parent.vpanel.repaint();
         	try {
-    			sleep(10);
+    			sleep(parent.SleepTime);
     		} catch (InterruptedException e) {
     			e.printStackTrace();
     		}

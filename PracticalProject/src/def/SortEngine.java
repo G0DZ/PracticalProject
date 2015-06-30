@@ -32,9 +32,7 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     public void stateChanged(ChangeEvent e) {
         JSlider source = (JSlider)e.getSource();
         if (!source.getValueIsAdjusting()) {
-            int fps = (int)source.getValue();
-            // Пока что тупо вывод в консоль
-            System.out.println(fps);
+            parent.SleepTime = (int)source.getValue();
         }
     }
         	

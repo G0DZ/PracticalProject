@@ -31,7 +31,9 @@ public class Sort extends JFrame {
 	static JLabel label_option_step;
 	JProgressBar progressBar;
 	JSlider slider;
-
+	
+	public int SleepTime;
+	
     //  онструктор нам все нарисует как надо
     @SuppressWarnings("deprecation")
 	Sort(Data data) {
