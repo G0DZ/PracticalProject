@@ -93,8 +93,8 @@ public class Sort extends JFrame {
 		button_start_sort.setBounds(440, 460, 180, 80);
 		button_make_step.setBounds(680, 460, 150, 30);		
 		button_check.setBounds(945, 460, 150, 30);
-		button_save.setBounds(945, 500, 150, 30);
-		button_revival.setBounds(945, 540, 150, 30);
+		button_save.setBounds(945, 540, 150, 30);
+		button_revival.setBounds(945, 500, 150, 30);
 		label_posib.setBounds(930, 425, 200, 30);
 		label_option_step.setBounds(670, 425, 200, 30);	
 		
