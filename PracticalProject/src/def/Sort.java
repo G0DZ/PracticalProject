@@ -11,7 +11,7 @@ public class Sort extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static final int FPS_MIN = 0;
 	static final int FPS_MAX = 500;
-	static final int FPS_INIT = 100;    //initial frames per second
+	static final int FPS_INIT = 50;    //initial frames per second
 	// Объявление компонент
 	JPanel p1;
 	VisPanel vpanel;
@@ -32,7 +32,7 @@ public class Sort extends JFrame {
 	JProgressBar progressBar;
 	JSlider slider;
 	
-	public int SleepTime;
+	public int SleepTime = 50;
 	
     // Конструктор нам все нарисует как надо
     @SuppressWarnings("deprecation")
