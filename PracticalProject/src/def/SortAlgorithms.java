@@ -69,8 +69,7 @@ public class SortAlgorithms
 	{
 		Sort parent;
 		boolean isForce;
-		public int SleepTime;
-		public int Progress;
+		public int SleepTime = 20;
 		InsertionSort(Sort S, boolean method)
 		{
 			parent = S;
@@ -87,6 +86,7 @@ public class SortAlgorithms
 			parent.vpanel.reInitComponents(); //обнуляем значения
 			parent.vpanel.SortName = null; //убираем у сортировки название
 			JOptionPane.showMessageDialog(parent, "Сортировка вставками завершена!"," ", JOptionPane.INFORMATION_MESSAGE);
+			parent.progressBar.setValue(0);; //обнуляем значения
 			Sort.button_check.setEnabled(true);
 			Sort.button_save.setEnabled(true);
 			Sort.button_revival.setEnabled(true);
@@ -101,17 +101,18 @@ public class SortAlgorithms
 			ColorInt temp;
 			for (i = 1; i < parent.vpanel.PanelArray.length; i++)
 	    	{
-				Progress = i;
-	    		synchronized (this)
+				float y =  ((i+1)*100/parent.vpanel.PanelArray.length);
+				parent.progressBar.setValue((int) y);
+				synchronized (this)
 	    		{
 	    			for (int k=0; k < i; k++)
 	    			{
 	    				parent.vpanel.PanelArray[k].InColor = Color.WHITE;
 	    			}
 		    		temp = parent.vpanel.PanelArray[i]; //текущий элемент это temp
-		    		parent.vpanel.PanelArray[i].InColor = Color.RED; // мы рассматриваем его, значит меняем на красный цвет.
+		    		parent.vpanel.PanelArray[i].InColor = Color.yellow; // мы рассматриваем его, значит меняем на красный цвет.
 		    		if(i != parent.vpanel.PanelArray.length-1)
-		    			parent.vpanel.PanelArray[i+1].InColor = Color.yellow;
+		    			parent.vpanel.PanelArray[i+1].InColor = Color.red;
 		    		boolean swapyet = false;
 		    		for (j = i - 1; j >= 0; j--)
 		    		{ //будем сравнивать со всеми предыдущими.
@@ -137,7 +138,7 @@ public class SortAlgorithms
     				parent.vpanel.ACInt+=1; //Доступ к массиву
 		    		parent.vpanel.repaint();
 		    		try {
-		    			sleep(100);
+		    			sleep(SleepTime);
 		    		} catch (InterruptedException e) {
 		    			e.printStackTrace();
 		    		}
@@ -192,6 +193,7 @@ public class SortAlgorithms
 			parent.vpanel.reInitComponents(); //обнуляем значения
 			parent.vpanel.SortName = null; //убираем у сортировки название
 			JOptionPane.showMessageDialog(parent, "Сортировка слиянием завершена!"," ", JOptionPane.INFORMATION_MESSAGE);
+			parent.progressBar.setValue(0);; //обнуляем значения
 			Sort.button_check.setEnabled(true);
 			Sort.button_save.setEnabled(true);
 			Sort.button_revival.setEnabled(true);
