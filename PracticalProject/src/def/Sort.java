@@ -9,9 +9,12 @@ public class Sort extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	static final int FPS_MIN = 0;
+	static final int FPS_MAX = 500;
+	static final int FPS_INIT = 100;    //initial frames per second
 	// Объявление компонент
-	JPanel p1;
-	VisPanel vpanel;
+	static JPanel p1;
+	static VisPanel vpanel;
 	static JButton button_input;
 	static JButton button_start_sort;
 	static JButton button_make_step;
@@ -20,12 +23,14 @@ public class Sort extends JFrame {
 	static JButton button_revival;
 	static JRadioButton r_demo_mode;
 	static JRadioButton r_step_mode;
-	JLabel label_opt_for_mode;
+	static JLabel label_opt_for_mode;
 	static JRadioButton r_ins_s;
 	static JRadioButton r_mer_s;
-	JLabel label_opt_for_sort;
-	JLabel label_posib;
-	JLabel label_option_step;
+	static JLabel label_opt_for_sort;
+	static JLabel label_posib;
+	static JLabel label_option_step;
+	static JProgressBar progressBar;
+	static JSlider framesPerSecond;
 
     // Конструктор нам все нарисует как надо
     @SuppressWarnings("deprecation")
@@ -77,13 +82,29 @@ public class Sort extends JFrame {
         label_opt_for_sort = new JLabel("Выбор сортировки");
         label_posib = new JLabel("Дополнительные возможности");
         label_option_step = new JLabel("Дополнительные параметры");
+       
+        progressBar = new JProgressBar();
+        progressBar.setMinimum(0);
+		progressBar.setMaximum(100);
+		progressBar.setStringPainted(true);
+		//progressBar.setValue(80);
+		
+		framesPerSecond = new JSlider(JSlider.HORIZONTAL, FPS_MIN, FPS_MAX, FPS_INIT);
+		//framesPerSecond.addChangeListener(this);
+		
+		//Turn on labels at major tick marks.
+		framesPerSecond.setMajorTickSpacing(10);
+		framesPerSecond.setMinorTickSpacing(1);
+		framesPerSecond.setPaintTicks(true);
+		framesPerSecond.setPaintLabels(true);
         
     	// Добавляем кнопочки на панель
 		p1 = new JPanel();
 		p1 .setLayout(null);
 		
-		vpanel.setBounds(20, 20, 1100, 400);
-		button_input.setBounds(20, 460, 180, 80);	
+		vpanel.setBounds(0, 0, 1145, 400);
+		progressBar.setBounds(0, 400, 1145, 25);	
+		button_input.setBounds(20,440,180,80);
 		label_opt_for_mode.setBounds(220,  425,  250,  25);
 		r_demo_mode.setBounds(220, 450, 150, 25);
 		r_step_mode.setBounds(220, 470, 150, 25);			
@@ -92,6 +113,7 @@ public class Sort extends JFrame {
 		r_mer_s.setBounds(220, 550, 150, 25);		
 		button_start_sort.setBounds(440, 460, 180, 80);
 		button_make_step.setBounds(680, 460, 150, 30);		
+		framesPerSecond.setBounds(680,520, 150, 50);
 		button_check.setBounds(945, 460, 150, 30);
 		button_save.setBounds(945, 540, 150, 30);
 		button_revival.setBounds(945, 500, 150, 30);
@@ -99,6 +121,7 @@ public class Sort extends JFrame {
 		label_option_step.setBounds(670, 425, 200, 30);	
 		
 		p1.add(vpanel);
+		p1.add(progressBar);
 		p1.add(button_input);
 		p1.add(label_opt_for_mode);
 		p1.add(r_demo_mode);
@@ -108,6 +131,7 @@ public class Sort extends JFrame {
 		p1.add(r_mer_s);		
 		p1.add(button_start_sort);
 		p1.add(button_make_step);
+		p1.add(framesPerSecond);
 		p1.add(button_check);
 		p1.add(button_save);
 		p1.add(button_revival);
@@ -131,7 +155,7 @@ public class Sort extends JFrame {
 		button_check.addActionListener(sEngine);
 		button_make_step.addActionListener(sEngine);
 		button_revival.addActionListener(sEngine);
-           
+		  
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
 		this.pack(); 
