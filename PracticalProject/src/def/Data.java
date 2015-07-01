@@ -17,6 +17,7 @@ public class Data
 	String b_auto_txt = "Автоматическая";
 	String b_OK_txt = "ОК";
 	String b_cancel_txt = "Отмена";
+	String b_logic_txt = "Об алгоритме";
 	//окошко выбора сортировки
 	String b_Insertion_txt = "Сортировка вставками";
 	String b_Merge_txt = "Сортировка слиянием";
