@@ -135,8 +135,12 @@ public class SortAlgorithms
 		    		}
 		    		for(int k = i; k > j+1; k--)
 		    			parent.vpanel.PanelArray[k].InColor = Color.GREEN;
-		    		
     				parent.vpanel.ACInt+=1; //Доступ к массиву
+    			    if(!parent.needToPaint.isSelected())
+    			    { //если показ логики выключен на интерфейсе
+    			    	for (int k=0; k < parent.vpanel.PanelArray.length; k++) //"обнуляем все"
+    			    		parent.vpanel.PanelArray[k].InColor = Color.WHITE; // красим белым
+    			    }
 		    		parent.vpanel.repaint();
 		    		if (parent.L != null) {
 		    			parent.L.strLog = parent.L.strLog + "Шаг " + i + "\nТекущий элемент, лежащий в ячейке с индексом " + i + ", был помещен в ячейку\nмассива с индексом " + j + ";\n";
@@ -268,7 +272,12 @@ public class SortAlgorithms
 		    }
 			parent.vpanel.ACInt+=3; //3 доступа к массиву
 			parent.vpanel.CompInt+=3; // 3 сравнения
-		    parent.vpanel.repaint();
+		    if(!parent.needToPaint.isSelected())
+		    { //если показ логики выключен на интерфейсе
+		    	for (int k=0; k < parent.vpanel.PanelArray.length; k++) //"обнуляем все"
+		    		parent.vpanel.PanelArray[k].InColor = Color.WHITE; // красим белым
+		    }
+			parent.vpanel.repaint(); //отрисовка изменений на панели.
         	try {
     			sleep(parent.SleepTime);
     		} catch (InterruptedException e) {

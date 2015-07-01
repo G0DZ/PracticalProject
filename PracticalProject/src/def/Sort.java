@@ -44,7 +44,7 @@ public class Sort extends JFrame {
     @SuppressWarnings("deprecation")
 	Sort(Data data) {
        
-        vpanel = new VisPanel();
+        vpanel = new VisPanel(this);
         vpanel.setPreferredSize(new Dimension(1100, 445));
         vpanel.setBackground(Color.PINK);       
         
