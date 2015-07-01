@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 
-public class Logic extends JFrame {
+public class LogicIns extends JFrame {
 
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class Logic extends JFrame {
 	String strLog = "";
 	Sort parentSE;
 
-	Logic(Sort se) {
+	LogicIns(Sort se) {
 	          	        
 		parentSE = se;
 		label_general = new JLabel("Общие сведения");
@@ -63,41 +63,19 @@ public class Logic extends JFrame {
 	    tf_yellow.setBounds(20,  177,  15,  15);
 	    tf_green.setBounds(20,  195,  15,  15);
 	    tf_blue.setBounds(20,  212,  15,  15);
-	    ta.setBounds(20, 237, 450, 150);
+	    
 	    
 	    tf_red.setEnabled(false);
 	    tf_yellow.setEnabled(false);
 	    tf_green.setEnabled(false);
 	    tf_blue.setEnabled(false);
-	    
-	    
-	    
-	    //... Set textarea's initial text, scrolling, and border.
-        //_resultArea.setText("Enter more text to see scrollbars");
+	    	    
+	    DefaultCaret caret = (DefaultCaret) ta.getCaret(); 
+	    caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         JScrollPane scrollingArea = new JScrollPane(ta);
-
-        //... Get the content pane, set layout, add to center
-        JPanel content = new JPanel();
-        content.setLayout(new BorderLayout());
-        content.add(scrollingArea, BorderLayout.CENTER);
-        
-      //... Set window characteristics.
-        this.setContentPane(content);
-        this.setTitle("TextAreaDemo B");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.pack();
-        
-   
-        
-        
-	    
-	    //DefaultCaret caret = (DefaultCaret) ta.getCaret(); 
-	    //caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);       
-	    //JScrollPane scrollPane = new JScrollPane(ta);
-	    //ta.setCaret(caret);
-	    //scrollPane.setViewportView(ta);
-	    //JOptionPane.showMessageDialog(null, scrollPane);
-
+        scrollingArea.setBounds(20, 237, 450, 150);	    
+	    ta.setCaret(caret);
+	    scrollingArea.setViewportView(ta);
 		
 		pl.add(label_general);
 		pl.add(label_legend);
@@ -107,7 +85,8 @@ public class Logic extends JFrame {
 		pl.add(tf_yellow);
 		pl.add(tf_green);
 		pl.add(tf_blue);
-		pl.add(ta);
+		//pl.add(ta);
+		pl.add(scrollingArea);
 	
 		getContentPane().add(pl);
 		setPreferredSize(new Dimension(500, 430));

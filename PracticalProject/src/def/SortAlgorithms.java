@@ -140,8 +140,8 @@ public class SortAlgorithms
 		    		parent.vpanel.repaint();
 		    		if (parent.L != null) {
 		    			parent.L.strLog = parent.L.strLog + "Ўаг " + i + "\n“екущий элемент, лежащий в €чейке с индексом " + i + ", был помещен в €чейку\nмассива с индексом " + j + ";\n";
-		    			parent.L.strLog = parent.L.strLog + "ѕри этом произошел сдвиг всех элементов, больших текущего элемента\n и лежащих в €чейках с индексом, меньшим, чем индекс текущего/n элемента;\n";
-		    			Logic.ta.setText(parent.L.strLog);
+		    			parent.L.strLog = parent.L.strLog + "ѕри этом произошел сдвиг всех элементов, больших текущего элемента\nи лежащих в €чейках с индексом, меньшим, чем индекс текущего\n элемента;\n";
+		    			parent.L.ta.setText(parent.L.strLog);
 		    		}
 		    		try {
 		    			sleep(parent.SleepTime);

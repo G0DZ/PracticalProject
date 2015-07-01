@@ -37,7 +37,7 @@ public class Sort extends JFrame {
 	JProgressBar progressBar;
 	JSlider slider;
 	JCheckBox needToPaint;
-	public Logic L = null;
+	public LogicIns L = null;
 	public int SleepTime = 50;
 	
     // Конструктор нам все нарисует как надо
@@ -221,7 +221,7 @@ public class Sort extends JFrame {
 		// Отображаю окно 
         this.setVisible(true);
         
-        L = new Logic(this);
+        L = new LogicIns(this);
 		L.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);      
      } 
        
