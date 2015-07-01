@@ -40,6 +40,7 @@ public class LogicIns extends JFrame {
 		    Font fontAD = new Font("Calibri", Font.PLAIN , 14);
 		    label_general_text.setFont(fontAD);
 		    label_legend_text.setFont(fontAD);
+		    
 
 		    tf_red = new JTextField();
 		    tf_yellow = new JTextField();
@@ -52,7 +53,7 @@ public class LogicIns extends JFrame {
 		    tf_blue.setBackground(Color.CYAN);
 		    
 		    ta = new JTextArea("Пояснения\n", 450, 150);
-		    
+		    ta.setFont(new Font("Calibri", Font.PLAIN , 20));
 		    // Добавляем на панель
 			pl = new JPanel();
 			pl .setLayout(null);
@@ -127,7 +128,7 @@ public class LogicIns extends JFrame {
 		    tf_blue.setBackground(Color.CYAN);
 		    
 		    ta = new JTextArea("Пояснения\n", 450, 90);
-		    
+		    ta.setFont(new Font("Calibri", Font.PLAIN , 12));
 		    // Добавляем на панель
 			pl = new JPanel();
 			pl .setLayout(null);
