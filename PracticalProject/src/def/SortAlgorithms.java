@@ -93,6 +93,7 @@ public class SortAlgorithms
 			Sort.button_input.setEnabled(true);
 			Sort.button_start_sort.setEnabled(false);
 			Sort.button_make_step.setEnabled(false);
+			Sort.button_logic.setEnabled(false);
 	    }
 		
 		private void InsSort()
@@ -200,6 +201,7 @@ public class SortAlgorithms
 			Sort.button_input.setEnabled(true);
 			Sort.button_start_sort.setEnabled(false);
 			Sort.button_make_step.setEnabled(false);
+			Sort.button_logic.setEnabled(false);
 	    }
 		
 		private void MergeSorting(ColorInt[] arr, int l, int r, int lforprint)

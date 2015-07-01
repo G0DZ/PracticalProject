@@ -18,10 +18,12 @@ public class Data
 	String b_OK_txt = "ОК";
 	String b_cancel_txt = "Отмена";
 	String b_logic_txt = "Об алгоритме";
+	String b_help_txt = "Помощь";
+	String b_about_prog_txt = "О программе";
 	//окошко выбора сортировки
 	String b_Insertion_txt = "Сортировка вставками";
 	String b_Merge_txt = "Сортировка слиянием";
-    static final int const_max = 1100;
+    static final int const_max = 1000;
 	Data() 
 	{
 		

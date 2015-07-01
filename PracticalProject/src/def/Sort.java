@@ -23,6 +23,8 @@ public class Sort extends JFrame {
 	static JButton button_save;
 	static JButton button_revival;
 	static JButton button_logic;
+	static JButton button_help;
+	static JButton button_about_prog;
 	static JRadioButton r_demo_mode;
 	static JRadioButton r_step_mode;
 	static JLabel label_opt_for_mode;
@@ -31,6 +33,7 @@ public class Sort extends JFrame {
 	static JLabel label_opt_for_sort;
 	static JLabel label_posib;
 	static JLabel label_option_step;
+	static JLabel label_help;
 	JProgressBar progressBar;
 	JSlider slider;
 	JCheckBox needToPaint;
@@ -42,7 +45,7 @@ public class Sort extends JFrame {
 	Sort(Data data) {
        
         vpanel = new VisPanel();
-        vpanel.setPreferredSize(new Dimension(1000, 425));
+        vpanel.setPreferredSize(new Dimension(1100, 445));
         vpanel.setBackground(Color.PINK);       
         
         // Создаем кнопочки (с помощью конструктора им можно задать имя)
@@ -53,6 +56,8 @@ public class Sort extends JFrame {
     	button_save = new JButton("Cursor.HAND_CURSOR");
     	button_revival = new JButton("Cursor.HAND_CURSOR");
     	button_logic = new JButton("Cursor.HAND_CURSOR");
+    	button_help = new JButton("Cursor.HAND_CURSOR");
+    	button_about_prog = new JButton("Cursor.HAND_CURSOR");
     	
     	button_input.setLabel(data.b_input_txt);
 		button_input.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -68,6 +73,10 @@ public class Sort extends JFrame {
 		button_revival.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_logic.setLabel(data.b_logic_txt);
 		button_logic.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_help.setLabel(data.b_help_txt);
+		button_help.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_about_prog.setLabel(data.b_about_prog_txt);
+		button_about_prog.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		r_demo_mode = new JRadioButton("Демонстрация");
 		r_demo_mode.setActionCommand("Демонстрация");
@@ -90,6 +99,7 @@ public class Sort extends JFrame {
         label_opt_for_sort = new JLabel("Выбор сортировки");
         label_posib = new JLabel("Дополнительные возможности");
         label_option_step = new JLabel("Дополнительные параметры");
+        label_help = new JLabel("Справка");
        
         progressBar = new JProgressBar();
         progressBar.setMinimum(0);
@@ -106,33 +116,33 @@ public class Sort extends JFrame {
         
         needToPaint = new JCheckBox("<HTML>Вкл./Выкл. отображение <br>логики алгоритма");
         needToPaint.setSelected(true);
-
-        //Register a listener for the check boxes.
-        /*chinButton.addItemListener(this);*/
          
     	// Добавляем кнопочки на панель
 		p1 = new JPanel();
 		p1 .setLayout(null);
 		
-		vpanel.setBounds(0, 0, 1145, 445);
-		progressBar.setBounds(0, 445, 1145, 25);	
-		button_input.setBounds(10, 485, 180,30);
-		label_opt_for_mode.setBounds(210,  470,  250,  25);
-		r_demo_mode.setBounds(210, 490, 150, 25);
-		r_step_mode.setBounds(210, 510, 150, 25);			
-		label_opt_for_sort.setBounds(210,  530,  250,  25);
-		r_ins_s.setBounds(210, 550, 150, 25);
-		r_mer_s.setBounds(210, 570, 150, 25);		
-		button_start_sort.setBounds(10, 525, 180,30);
-		button_make_step.setBounds(438, 495, 150, 30);
-		button_logic.setBounds(438, 530, 150, 30);
-		slider.setBounds(385, 565, 260, 50);
-		button_check.setBounds(660, 500, 150, 30);
-		button_save.setBounds(660, 570, 150, 30);
-		button_revival.setBounds(660, 535, 150, 30);
-		label_posib.setBounds(650, 470, 200, 30);
-		label_option_step.setBounds(430, 468, 200, 30);	
-		needToPaint.setBounds(10, 560, 180,30);
+		vpanel.setBounds(0, 0, 1100, 445);
+		progressBar.setBounds(0, 445, 1100, 25);	
+		button_input.setBounds(10, 495, 200,30);
+		label_opt_for_mode.setBounds(220,  472,  250,  25);
+		r_demo_mode.setBounds(270, 492, 150, 25);
+		r_step_mode.setBounds(270, 512, 150, 25);			
+		label_opt_for_sort.setBounds(265,  535,  250,  25);
+		r_ins_s.setBounds(270, 555, 150, 25);
+		r_mer_s.setBounds(270, 575, 150, 25);		
+		button_start_sort.setBounds(10, 530, 200,30);
+		button_make_step.setBounds(440, 495, 200, 30);
+		button_logic.setBounds(440, 530, 200, 30);
+		slider.setBounds(428, 565, 226, 50);
+		button_check.setBounds(660, 495, 200, 30);
+		button_save.setBounds(660, 565, 200, 30);
+		button_revival.setBounds(660, 530, 200, 30);
+		label_posib.setBounds(670, 470, 200, 30);
+		label_option_step.setBounds(453, 470, 200, 30);	
+		label_help.setBounds(950, 470, 200, 30);	
+		needToPaint.setBounds(25, 570, 180,30);
+		button_help.setBounds(880, 495, 200, 30);
+		button_about_prog.setBounds(880, 530, 200, 30);
 		
 		p1.add(vpanel);
 		p1.add(progressBar);
@@ -152,7 +162,10 @@ public class Sort extends JFrame {
 		p1.add(button_revival);
 		p1.add(label_posib);
 		p1.add(label_option_step);
+		p1.add(label_help);
 		p1.add(needToPaint);
+		p1.add(button_help);
+		p1.add(button_about_prog);
 		
 		// В начале блокируем все кнопки, кроме одной 
 		button_start_sort.setEnabled(false);
@@ -160,9 +173,10 @@ public class Sort extends JFrame {
     	button_check.setEnabled(false);
     	button_save.setEnabled(false);
     	button_revival.setEnabled(false);
+    	button_logic.setEnabled(false);
 		
 		getContentPane().add(p1);
-		setPreferredSize(new Dimension(1145, 640));
+		setPreferredSize(new Dimension(1100, 640));
     	 	
 		// Тут подключаем движок
 		SortEngine sEngine = new SortEngine(this, data);
@@ -174,6 +188,8 @@ public class Sort extends JFrame {
 		button_save.addActionListener(sEngine);
 		button_logic.addActionListener(sEngine);
 		slider.addChangeListener(sEngine);
+		button_help.addActionListener(sEngine);
+		button_about_prog.addActionListener(sEngine);
 		
 		// Подключаем всплывающие подсказки
 		vpanel.setToolTipText("Визуализация сортировки");
@@ -185,7 +201,9 @@ public class Sort extends JFrame {
 		button_check.setToolTipText("<HTML>Нажми для проверки массива <br>на упорядоченность по неубыванию");
 		button_save.setToolTipText("<HTML>Нажми для сохранения отсортированного <br>массива ");
 		button_revival.setToolTipText("<HTML>Нажми для восстановления <br>исходных данных");
-		button_logic.setToolTipText("<HTML>Нажми для получения объяснения <br> работы алгоритма");
+		button_logic.setToolTipText("<HTML>Нажми для получения объяснения <br>работы алгоритма");
+		button_help.setToolTipText("Нажми для получения помощи");
+		button_about_prog.setToolTipText("<HTML>Нажми для получения общей информации <br>о программе");
 	    ToolTipManager.sharedInstance().setInitialDelay(0);		
 		  
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

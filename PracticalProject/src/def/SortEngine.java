@@ -102,6 +102,7 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     			if ((Sort.r_step_mode.isSelected()) && (Sort.r_ins_s.isSelected())) {
     				x = 11;
     				Sort.button_make_step.setEnabled(true);
+    				Sort.button_logic.setEnabled(true);
     				Sort.button_start_sort.setEnabled(false);
     			}
     			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_mer_s.isSelected()))
@@ -109,6 +110,7 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     			if ((Sort.r_step_mode.isSelected()) && (Sort.r_mer_s.isSelected())) {
     				x = 22;	
     				Sort.button_make_step.setEnabled(true);
+    				Sort.button_logic.setEnabled(true);
     				Sort.button_start_sort.setEnabled(false);
     			}
 	    		switch(x)
@@ -194,6 +196,10 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
 			    str_temp = parent.vpanel.PanelArray.length + "\n" + str_temp;
 			    fileToSave = FileWorker.write(fileToSave, str_temp);
 			} 			      	
+    	}
+    	if(actioncommand == dataEngine.b_logic_txt)
+    	{
+    		new Logic(this);
     	}
     }
     
