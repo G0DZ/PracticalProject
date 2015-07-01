@@ -94,24 +94,25 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     				parent.vpanel.PanelArray[i] = new ColorInt();
 					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
     			}
-	    		//this.dialogChSort = new ChooseSorting(this, dataEngine);
-    			//int x = this.dialogChSort.executeSort();
     			int x = 0;
+    			parent.L.ta.setText(null);
+    			parent.L.strLog = "";
+    			Sort.button_logic.setEnabled(true);
     			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_ins_s.isSelected()))
     				x = 1;
     			if ((Sort.r_step_mode.isSelected()) && (Sort.r_ins_s.isSelected())) {
     				x = 11;
     				Sort.button_make_step.setEnabled(true);
-    				Sort.button_logic.setEnabled(true);
     				Sort.button_start_sort.setEnabled(false);
+    				parent.typeOfSort = true;
     			}
     			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_mer_s.isSelected()))
     				x = 2;
     			if ((Sort.r_step_mode.isSelected()) && (Sort.r_mer_s.isSelected())) {
     				x = 22;	
     				Sort.button_make_step.setEnabled(true);
-    				Sort.button_logic.setEnabled(true);
     				Sort.button_start_sort.setEnabled(false);
+    				parent.typeOfSort = false;
     			}
 	    		switch(x)
 	    			{

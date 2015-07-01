@@ -93,7 +93,6 @@ public class SortAlgorithms
 			Sort.button_input.setEnabled(true);
 			Sort.button_start_sort.setEnabled(false);
 			Sort.button_make_step.setEnabled(false);
-			Sort.button_logic.setEnabled(false);
 	    }
 		
 		private void InsSort()
@@ -210,7 +209,6 @@ public class SortAlgorithms
 			Sort.button_input.setEnabled(true);
 			Sort.button_start_sort.setEnabled(false);
 			Sort.button_make_step.setEnabled(false);
-			Sort.button_logic.setEnabled(false);
 	    }
 		
 		private void MergeSorting(ColorInt[] arr, int l, int r, int lforprint)
@@ -270,6 +268,11 @@ public class SortAlgorithms
 		    	else 		//правую в желтый.
 		    		parent.vpanel.PanelArray[i].InColor = Color.YELLOW;
 		    }
+		    if (parent.L != null) {
+		    	/*parent.L.strLog = parent.L.strLog +*/
+    			parent.L.strLog = parent.L.strLog + "Шаг\nСоединены два упорядоченных участка массива (левая часть с " + l + " до " + m + " , \nправая с " + (m+1) + " до " + r + ");\n";
+    			parent.L.ta.setText(parent.L.strLog);
+    		}
 			parent.vpanel.ACInt+=3; //3 доступа к массиву
 			parent.vpanel.CompInt+=3; // 3 сравнения
 		    if(!parent.needToPaint.isSelected())

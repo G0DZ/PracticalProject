@@ -38,6 +38,7 @@ public class Sort extends JFrame {
 	JSlider slider;
 	JCheckBox needToPaint;
 	public LogicIns L = null;
+	public boolean typeOfSort;
 	public int SleepTime = 50;
 	
     //  онструктор нам все нарисует как надо
@@ -141,7 +142,7 @@ public class Sort extends JFrame {
 		label_option_step.setBounds(453, 470, 200, 30);	
 		label_help.setBounds(950, 470, 200, 30);	
 		needToPaint.setBounds(25, 570, 180,30);
-		button_help.setBounds(880, 495, 200, 30);
+		//button_help.setBounds(880, 495, 200, 30);
 		button_about_prog.setBounds(880, 530, 200, 30);
 		
 		p1.add(vpanel);
