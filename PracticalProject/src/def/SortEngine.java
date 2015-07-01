@@ -202,6 +202,17 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     	{
     		parent.L.setVisible(true);
     	}
+    	if(actioncommand == dataEngine.b_about_prog_txt)
+    	{
+    		JOptionPane.showMessageDialog(null, "<HTML><h2>Проект \"Визуализация сортировки\"</h2>"
+    				+ "<p>Практика, 2й курс, 4й семестр. "
+    				+ "<p>\"ЛЭТИ\", Факультет КТИ, кафедра МОЭВМ"
+    				+ "<p><p>Над проектом работали студенты группы 3304:"
+    				+ "<p>   Лурье Роман, Черепкова Юлия."
+    				+ "<p>Контакты: john.lurye@gmail.com , 166_yulia@mail.ru"
+    				+ "<p><p>Copyright &copy; 01.07.2015", "О программе...", JOptionPane.INFORMATION_MESSAGE);		
+    	}
+    	
     }
     
 }
