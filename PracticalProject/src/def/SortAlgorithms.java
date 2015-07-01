@@ -138,6 +138,11 @@ public class SortAlgorithms
 		    		
     				parent.vpanel.ACInt+=1; //Доступ к массиву
 		    		parent.vpanel.repaint();
+		    		if (parent.L != null) {
+		    			parent.L.strLog = parent.L.strLog + "Шаг " + i + "\nТекущий элемент, лежащий в ячейке с индексом " + i + ", был помещен в ячейку\nмассива с индексом " + j + ";\n";
+		    			parent.L.strLog = parent.L.strLog + "При этом произошел сдвиг всех элементов, больших текущего элемента\n и лежащих в ячейках с индексом, меньшим, чем индекс текущего/n элемента;\n";
+		    			Logic.ta.setText(parent.L.strLog);
+		    		}
 		    		try {
 		    			sleep(parent.SleepTime);
 		    		} catch (InterruptedException e) {

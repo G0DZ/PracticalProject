@@ -3,6 +3,7 @@ package def;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 
 public class Logic extends JFrame {
 
@@ -15,26 +16,25 @@ public class Logic extends JFrame {
 	static JLabel label_general_text;
 	static JLabel label_legend;
 	static JLabel label_legend_text;
-	static JLabel label_explanations_text;
 	static JTextField tf_red;
 	static JTextField tf_yellow;
 	static JTextField tf_green;
 	static JTextField tf_blue;
-	SortEngine parentSE;
+	static JTextArea ta;
+	String strLog = "";
+	Sort parentSE;
 
-	Logic(SortEngine se) {
+	Logic(Sort se) {
 	          	        
 		parentSE = se;
 		label_general = new JLabel("Общие сведения");
 		label_general_text = new JLabel("<HTML>Сортировка вставками (англ. Insertion sort) — алгоритм сортировки, в котором элементы входной последовательности просматриваются по одному, и каждый новый поступивший элемент размещается в подходящее место среди ранее упорядоченных элементов. Вычислительная сложность - O(n^2).");
 		label_legend = new JLabel("Условные обозначения");
 		label_legend_text = new JLabel("<HTML> -  следующий элемент <br> -  текущий элемент <br> -  элемент больше или равен текущему <br> -  элемент меньше текущего");
-		label_explanations_text = new JLabel("Пояснения");
 		
 	    Font font = new Font("Calibri", Font.BOLD , 14);
 	    label_general.setFont(font);  
 	    label_legend.setFont(font); 
-	    label_explanations_text.setFont(font);
 	    Font fontAD = new Font("Calibri", Font.PLAIN , 14);
 	    label_general_text.setFont(fontAD);
 	    label_legend_text.setFont(fontAD);
@@ -48,25 +48,32 @@ public class Logic extends JFrame {
 	    tf_yellow.setBackground(Color.YELLOW);
 	    tf_green.setBackground(Color.GREEN);
 	    tf_blue.setBackground(Color.CYAN);
-	         
+	    
+	    ta = new JTextArea("Пояснения\n", 450, 180);
+	    
 	    // Добавляем на панель
 		pl = new JPanel();
 		pl .setLayout(null);
 					
 		label_general.setBounds(20,  20,  150,  15);
-		label_general_text.setBounds(20, 40, 390, 85);
+		label_general_text.setBounds(20, 40, 450, 85);
 		label_legend.setBounds(20,  135,  150,  15);
-		label_legend_text.setBounds(40,  155,  390,  70);
+		label_legend_text.setBounds(40,  155,  450,  70);
 		tf_red.setBounds(20,  160,  15,  15);
 	    tf_yellow.setBounds(20,  177,  15,  15);
 	    tf_green.setBounds(20,  195,  15,  15);
 	    tf_blue.setBounds(20,  212,  15,  15);
-	    label_explanations_text.setBounds(20,  237,  150,  15);
+	    ta.setBounds(20, 237, 450, 180);
 	    
 	    tf_red.setEnabled(false);
 	    tf_yellow.setEnabled(false);
 	    tf_green.setEnabled(false);
 	    tf_blue.setEnabled(false);
+	    
+	   /* DefaultCaret caret = (DefaultCaret) ta.getCaret(); 
+	    caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);       
+	    JScrollPane scrollPane = new JScrollPane(ta);
+	    scrollPane.setViewportView(ta);*/
 		
 		pl.add(label_general);
 		pl.add(label_legend);
@@ -76,7 +83,7 @@ public class Logic extends JFrame {
 		pl.add(tf_yellow);
 		pl.add(tf_green);
 		pl.add(tf_blue);
-		pl.add(label_explanations_text);
+		pl.add(ta);
 	
 		getContentPane().add(pl);
 		setPreferredSize(new Dimension(500, 430));
@@ -92,8 +99,6 @@ public class Logic extends JFrame {
         center.x = center.x - w/2; 
         center.y = center.y - h/2;
         this.setLocation(center);
-		// Отображаю окно 
-        this.setVisible(true);
      } 
 	       	
 }

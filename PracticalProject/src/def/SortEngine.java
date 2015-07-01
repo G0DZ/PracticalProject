@@ -199,7 +199,7 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     	}
     	if(actioncommand == dataEngine.b_logic_txt)
     	{
-    		new Logic(this);
+    		parent.L.setVisible(true);
     	}
     }
     
