@@ -174,6 +174,7 @@ public class SortAlgorithms
 	{
 		Sort parent;
 		boolean isForce;
+		int test = 0;
 		MergeSort(Sort S, boolean method)
 		{
 			parent = S;
@@ -187,6 +188,7 @@ public class SortAlgorithms
 			parent.vpanel.SortName = " слиянием"; //даем сортировке название.
 			parent.vpanel.repaint();
 			MergeSorting(parent.vpanel.PanelArray,0,parent.vpanel.PanelArray.length-1,0);
+			parent.progressBar.setValue(100); //обнуляем значения
 			//действия после работы потока.
 			parent.vpanel.reInitComponents(); //обнуляем значения
 			parent.vpanel.SortName = null; //убираем у сортировки название
@@ -201,22 +203,31 @@ public class SortAlgorithms
 	    }
 		
 		private void MergeSorting(ColorInt[] arr, int l, int r, int lforprint)
-		{	
+		{	//lforprint - преременная, передаваемая в рекурсию для отрисовки левой части слияния.
 			synchronized (this) 
 			{
-		    //! Условие выхода из рекурсии
-		    if(l >= r) return;
-		    int m = (l + r)/2;
-		    //! Рекурсивная сортировка полученных массивов
-		    MergeSorting(arr, l, m,lforprint);
-		    MergeSorting(arr, m+1, r,l);
-		    MergeS(arr, l, r, m, lforprint);
-		    
-			if(!isForce)
-			{
-				sleepSort();
+				//! Условие выхода из рекурсии
+				if(l >= r) 
+				{
+					test++;
+					float y = (test)*100/(2*parent.vpanel.PanelArray.length);
+					parent.progressBar.setValue((int) y);
+					return;
+				}
+				int m = (l + r)/2;
+
+				//! Рекурсивная сортировка полученных массивов
+				MergeSorting(arr, l, m,lforprint);
+				MergeSorting(arr, m+1, r,l);
+					test++;
+					float y = (test)*100/(2*parent.vpanel.PanelArray.length);
+					parent.progressBar.setValue((int) y);
+				MergeS(arr, l, r, m, lforprint);
+				if(!isForce)
+				{
+					sleepSort();
+				}
 			}
-		}
 		}
 		
 		private void MergeS(ColorInt[] arr, int l, int r, int m, int lforprint)
@@ -237,23 +248,16 @@ public class SortAlgorithms
 		        arr[j].I=mas[j];
 				parent.vpanel.ACInt++; //доступ к массиву
 		    }
-		    for (int k=0; k < lforprint; k++)
-			{
-				parent.vpanel.PanelArray[k].InColor = Color.DARK_GRAY;
-			}
-		    for (int k=lforprint; k < l; k++)
-		    {
-		    	parent.vpanel.PanelArray[k].InColor = Color.GREEN;
-		    }
+		    for (int k=0; k < lforprint; k++) //"обнуляем все", до левой части слияния
+				parent.vpanel.PanelArray[k].InColor = Color.WHITE;
+		    for (int k=lforprint; k < l; k++) //левую часть слияния, если она есть, конечно
+		    	parent.vpanel.PanelArray[k].InColor = Color.GREEN; //красим в зеленый
 		    for(int i = l; i <= r; i++)
 		    {
-		    	if(i <= m)
+		    	if(i <= m) 	//левую часть в голубой
 		    		parent.vpanel.PanelArray[i].InColor = Color.CYAN;
-		    	else
-		    		//if(i == m+1)
-		    			//parent.vpanel.PanelArray[i].InColor = Color.RED;
-		    		//else
-		    			parent.vpanel.PanelArray[i].InColor = Color.YELLOW;
+		    	else 		//правую в желтый.
+		    		parent.vpanel.PanelArray[i].InColor = Color.YELLOW;
 		    }
 			parent.vpanel.ACInt+=3; //3 доступа к массиву
 			parent.vpanel.CompInt+=3; // 3 сравнения
@@ -267,17 +271,22 @@ public class SortAlgorithms
 		
 		public void sleepSort()
 		{
-			synchronized (this) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-			}
+			synchronized (this) 
+			{
+				try 
+				{
+					wait();
+				} 
+				catch (InterruptedException e) 
+				{
+				}
 			}
 		}
 		
 		public void wakeSort()
 		{
-			synchronized (this) {
+			synchronized (this) 
+			{
 				this.notify();
 			}
 		}
