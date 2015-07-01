@@ -41,8 +41,8 @@ public class Sort extends JFrame {
     @SuppressWarnings("deprecation")
 	Sort(Data data) {
        
-        vpanel = new VisPanel();
-        vpanel.setPreferredSize(new Dimension(1000, 425));
+        vpanel = new VisPanel(this);
+        vpanel.setPreferredSize(new Dimension(1145, 445));
         vpanel.setBackground(Color.PINK);       
         
         // Создаем кнопочки (с помощью конструктора им можно задать имя)

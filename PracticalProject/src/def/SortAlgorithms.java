@@ -134,8 +134,12 @@ public class SortAlgorithms
 		    		}
 		    		for(int k = i; k > j+1; k--)
 		    			parent.vpanel.PanelArray[k].InColor = Color.GREEN;
-		    		
     				parent.vpanel.ACInt+=1; //ƒоступ к массиву
+    			    if(!parent.needToPaint.isSelected())
+    			    { //если показ логики выключен на интерфейсе
+    			    	for (int k=0; k < parent.vpanel.PanelArray.length; k++) //"обнул€ем все"
+    			    		parent.vpanel.PanelArray[k].InColor = Color.WHITE; // красим белым
+    			    }
 		    		parent.vpanel.repaint();
 		    		try {
 		    			sleep(parent.SleepTime);
@@ -261,7 +265,12 @@ public class SortAlgorithms
 		    }
 			parent.vpanel.ACInt+=3; //3 доступа к массиву
 			parent.vpanel.CompInt+=3; // 3 сравнени€
-		    parent.vpanel.repaint();
+		    if(!parent.needToPaint.isSelected())
+		    { //если показ логики выключен на интерфейсе
+		    	for (int k=0; k < parent.vpanel.PanelArray.length; k++) //"обнул€ем все"
+		    		parent.vpanel.PanelArray[k].InColor = Color.WHITE; // красим белым
+		    }
+			parent.vpanel.repaint(); //отрисовка изменений на панели.
         	try {
     			sleep(parent.SleepTime);
     		} catch (InterruptedException e) {

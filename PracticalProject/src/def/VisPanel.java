@@ -12,6 +12,7 @@ public class VisPanel extends JPanel
 	
 	public ColorInt[] PanelArray;
 	
+	public Sort parent = null; //указатель на родителя
 	private String SortDef = "Сортировка: ";
 	String SortName = null;
 	private String Comp = "Сравнений: ";
@@ -19,15 +20,15 @@ public class VisPanel extends JPanel
 	private String AC = "Доступов к массиву: "; 
 	int ACInt;
 	private String Delay = "Задержка : ";
-	int DelayInt = 0;
 	private String ms = " мс";
 	private String Delim = " | ";
 	
 	private String NumberofElements = " элем.";
 	
-	public VisPanel() 
+	public VisPanel(Sort p) 
 	{
 		setOpaque(true);
+		parent = p;
 	}
 
 	protected void paintComponent(Graphics g) 
@@ -46,8 +47,8 @@ public class VisPanel extends JPanel
 		    // drawing finction 
 			g2d.setFont(new Font("Calibri", Font.PLAIN, fontsize));
 		    if (SortName != null)
-			{
-				String S = SortDef+SortName+Delim+Comp+CompInt+Delim+AC+ACInt+Delim+Delay+DelayInt+ms;
+			{ //выводим на печать всю информацию о сортировке.
+				String S = SortDef+SortName+Delim+Comp+CompInt+Delim+AC+ACInt+Delim+Delay+parent.SleepTime+ms;
 				g2d.drawString(S, 5, 12);
 			}
 			//печать сообщения с количеством элементов.
@@ -71,7 +72,6 @@ public class VisPanel extends JPanel
 	{
 		CompInt = 0;
 		ACInt = 0;
-		DelayInt = 0;
 	}
 
 }
