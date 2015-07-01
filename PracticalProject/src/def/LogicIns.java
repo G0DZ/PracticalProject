@@ -20,7 +20,7 @@ public class LogicIns extends JFrame {
 	static JTextField tf_yellow;
 	static JTextField tf_green;
 	static JTextField tf_blue;
-	static JTextArea ta;
+	JTextArea ta;
 	String strLog = "";
 	Sort parentSE;
 
