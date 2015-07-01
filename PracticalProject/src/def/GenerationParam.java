@@ -141,14 +141,14 @@ public class GenerationParam extends JDialog implements ActionListener {
 			SpinnerModel model1 =
 			        new SpinnerNumberModel(1, //initial value
 			                               1, //min
-			                               Integer.MAX_VALUE, //max
+			                               Data.const_max-1, //max
 			                               1); //step
 			spin1 = new JSpinner(model1);
 			//spin.addChangeListener(listener);			
 			SpinnerModel model2 =
 			        new SpinnerNumberModel(300, //initial value
 			                               1, //min
-			                               Integer.MAX_VALUE, //max
+			                               Data.const_max, //max
 			                               1); //step
 			spin2 = new JSpinner(model2);
 			//spin.addChangeListener(listener);

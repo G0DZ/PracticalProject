@@ -24,6 +24,7 @@ public class Data
 	String b_Insertion_txt = "Сортировка вставками";
 	String b_Merge_txt = "Сортировка слиянием";
     static final int const_max = 1000;
+    static final int elem_max = 400;
 	Data() 
 	{
 		
