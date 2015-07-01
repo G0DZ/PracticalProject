@@ -103,6 +103,8 @@ public class Sort extends JFrame {
         label_help = new JLabel("Справка");
        
         progressBar = new JProgressBar();
+        progressBar.setBackground(Color.MAGENTA);
+        progressBar.setForeground(Color.MAGENTA);
         progressBar.setMinimum(0);
 		progressBar.setMaximum(100);
 		progressBar.setStringPainted(true);

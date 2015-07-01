@@ -88,7 +88,10 @@ public class Generation extends JDialog implements ActionListener {
 		   	int size = 0;
 		   	if (in.hasNextInt()) {
 		   		size =  in.nextInt();
-		   		//if (size > 400)
+		   		if (size > Data.const_max) {
+		   			in.close();
+			   		return false;
+		   		}		   			
 		   	}
 		   	else {
 		   		in.close();
@@ -97,7 +100,12 @@ public class Generation extends JDialog implements ActionListener {
 		   	dataGen.array = new int[size];
 		   	if (in.hasNextInt()) {
 				while(in.hasNextInt()){
-					dataGen.array[real_length] = in.nextInt();	
+					int gyg = in.nextInt();
+					if (gyg > Data.elem_max) {
+			   			in.close();
+				   		return false;
+			   		}							
+					dataGen.array[real_length] = gyg;	
 					real_length++;				
 				}
 				in.close();
