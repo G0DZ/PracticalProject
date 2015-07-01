@@ -86,8 +86,10 @@ public class Generation extends JDialog implements ActionListener {
 		   	Scanner in = new Scanner(file);
 		   	real_length = 0;
 		   	int size = 0;
-		   	if (in.hasNextInt()) 
+		   	if (in.hasNextInt()) {
 		   		size =  in.nextInt();
+		   		//if (size > 400)
+		   	}
 		   	else {
 		   		in.close();
 		   		return false;
