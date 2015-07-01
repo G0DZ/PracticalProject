@@ -141,11 +141,10 @@ public class SortAlgorithms
     			    		parent.vpanel.PanelArray[k].InColor = Color.WHITE; // красим белым
     			    }
 		    		parent.vpanel.repaint();
-		    		if (parent.L != null) {
-		    			parent.L.strLog = parent.L.strLog + "Ўаг " + i + "\n“екущий элемент, лежащий в €чейке с индексом " + i + ", был помещен в €чейку\nмассива с индексом " + j + ";\n";
-		    			parent.L.strLog = parent.L.strLog + "ѕри этом произошел сдвиг всех элементов, больших текущего элемента\nи лежащих в €чейках с индексом, меньшим, чем индекс текущего\n элемента;\n";
-		    			parent.L.ta.setText(parent.L.strLog);
-		    		}
+		    		parent.StrLog = parent.StrLog + "Ўаг " + i + "\n“екущий элемент, лежащий в €чейке с индексом " + i + ", был помещен в €чейку\nмассива с индексом " + j + ";\n";
+	    			parent.StrLog = parent.StrLog + "ѕри этом произошел сдвиг всех элементов, больших текущего элемента\nи лежащих в €чейках с индексом, меньшим, чем индекс текущего\n элемента;\n";
+		    		if (parent.L != null) 
+		    			parent.L.ta.setText(parent.StrLog);
 		    		try {
 		    			sleep(parent.SleepTime);
 		    		} catch (InterruptedException e) {
@@ -268,12 +267,10 @@ public class SortAlgorithms
 		    	else 		//правую в желтый.
 		    		parent.vpanel.PanelArray[i].InColor = Color.YELLOW;
 		    }
-		    if (parent.L != null) {
-		    	/*parent.L.strLog = parent.L.strLog +*/
-    			parent.L.strLog = parent.L.strLog + "Ўаг\n—оединены два упор€доченных участка массива (лева€ часть с " + l + " до " + m + " , \nправа€ с " + (m+1) + " до " + r + ");\n";
-    			parent.L.ta.setText(parent.L.strLog);
-    		}
-			parent.vpanel.ACInt+=3; //3 доступа к массиву
+		    parent.StrLog = parent.StrLog + "Ўаг\n—оединены два упор€доченных участка массива (лева€ часть с " + l + " до " + m + " , \nправа€ с " + (m+1) + " до " + r + ");\n";
+		    if (parent.L != null) 
+    			parent.L.ta.setText(parent.StrLog);
+		    parent.vpanel.ACInt+=3; //3 доступа к массиву
 			parent.vpanel.CompInt+=3; // 3 сравнени€
 		    if(!parent.needToPaint.isSelected())
 		    { //если показ логики выключен на интерфейсе

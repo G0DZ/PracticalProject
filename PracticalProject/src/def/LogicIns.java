@@ -21,14 +21,13 @@ public class LogicIns extends JFrame {
 	static JTextField tf_green;
 	static JTextField tf_blue;
 	JTextArea ta;
-	String strLog = "";
 	Sort parentSE;
 
-	LogicIns(Sort se) {
-	          	        
+	LogicIns(Sort se, boolean typeOfSort) {
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);       	        
 		parentSE = se;
 // ЕСЛИ СОРТИРОВКА ВСТАВКАМИ		
-		if (se.typeOfSort == true) {
+		if (typeOfSort == true) {
 			label_general = new JLabel("Общие сведения");
 			label_general_text = new JLabel("<HTML>Сортировка вставками (англ. Insertion sort) — алгоритм сортировки, в котором элементы входной последовательности просматриваются по одному, и каждый новый поступивший элемент размещается в подходящее место среди ранее упорядоченных элементов. Вычислительная сложность - O(n^2).");
 			label_legend = new JLabel("Условные обозначения");
@@ -53,7 +52,8 @@ public class LogicIns extends JFrame {
 		    tf_blue.setBackground(Color.CYAN);
 		    
 		    ta = new JTextArea("Пояснения\n", 450, 150);
-		    ta.setFont(new Font("Calibri", Font.PLAIN , 20));
+		    ta.setFont(new Font("Calibri", Font.PLAIN , 12));
+		    ta.setText(se.StrLog);
 		    // Добавляем на панель
 			pl = new JPanel();
 			pl .setLayout(null);
@@ -94,6 +94,7 @@ public class LogicIns extends JFrame {
 		    	 	
 		    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
 			this.pack(); 
+			this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);  
 	        // Запрет на изменение размера экрана
 			this.setResizable(false);                   
 	        //Точка размещения экрана
@@ -129,6 +130,7 @@ public class LogicIns extends JFrame {
 		    
 		    ta = new JTextArea("Пояснения\n", 450, 90);
 		    ta.setFont(new Font("Calibri", Font.PLAIN , 12));
+		    ta.setText(se.StrLog);
 		    // Добавляем на панель
 			pl = new JPanel();
 			pl .setLayout(null);
@@ -166,6 +168,7 @@ public class LogicIns extends JFrame {
 		    	 	
 		    // Устанавливаем размер окна достаточно большим, чтобы разместить на нем все нужные объекты
 			this.pack(); 
+			this.setAlwaysOnTop(true);
 	        // Запрет на изменение размера экрана
 			this.setResizable(false);                   
 	        //Точка размещения экрана

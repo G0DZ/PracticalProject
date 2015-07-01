@@ -38,6 +38,7 @@ public class Sort extends JFrame {
 	JSlider slider;
 	JCheckBox needToPaint;
 	public LogicIns L = null;
+	public String StrLog = "";
 	public boolean typeOfSort;
 	public int SleepTime = 50;
 	
@@ -224,8 +225,8 @@ public class Sort extends JFrame {
 		// Отображаю окно 
         this.setVisible(true);
         
-        L = new LogicIns(this);
-		L.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);      
+        //L = new LogicIns(this);
+    
      } 
        
 }

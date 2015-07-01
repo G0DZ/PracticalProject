@@ -24,6 +24,7 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
 	InsertionSort IS;
 	MergeSort MS;
 	Check Ch;
+	boolean typeofsort;
 	
     // Конструктор сохраняет ссылку к Sort window в переменной класса parent
     SortEngine(Sort parent, Data data){
@@ -95,8 +96,13 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
 					parent.vpanel.PanelArray[i].I = dataEngine.array[i];
     			}
     			int x = 0;
-    			parent.L.ta.setText(null);
-    			parent.L.strLog = "";
+				parent.StrLog = " ";
+				parent.L = null;
+    			//if(parent.L != null)
+    			//{
+    			//	parent.L.ta.setText("");
+    			//	parent.StrLog = " ";
+    			//}
     			Sort.button_logic.setEnabled(true);
     			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_ins_s.isSelected()))
     				x = 1;
@@ -104,7 +110,7 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     				x = 11;
     				Sort.button_make_step.setEnabled(true);
     				Sort.button_start_sort.setEnabled(false);
-    				parent.typeOfSort = true;
+    				//parent.typeOfSort = true;
     			}
     			if ((Sort.r_demo_mode.isSelected()) && (Sort.r_mer_s.isSelected()))
     				x = 2;
@@ -112,25 +118,29 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     				x = 22;	
     				Sort.button_make_step.setEnabled(true);
     				Sort.button_start_sort.setEnabled(false);
-    				parent.typeOfSort = false;
+    				//parent.typeOfSort = false;
     			}
 	    		switch(x)
 	    			{
 	    			case 1:
 	    				IS = new InsertionSort(parent, true);
 			    		IS.start();
+			    		typeofsort = true;
 	    				break;
 	    			case 11:
 	    				IS = new InsertionSort(parent, false);
 			    		IS.start();
+			    		typeofsort = true;
 	    				break;
 	    			case 2:
 	    				MS = new MergeSort(parent, true);
 			    		MS.start();
+			    		typeofsort = false;
 			    		break;
 	    			case 22:
 	    				MS = new MergeSort(parent, false);
 			    		MS.start();
+			    		typeofsort = false;
 			    		break;
 	    			case 0:
 	    				break;
@@ -200,7 +210,10 @@ public class SortEngine extends JFrame implements ActionListener, ChangeListener
     	}
     	if(actioncommand == dataEngine.b_logic_txt)
     	{
+    		if(parent.L == null)
+    			parent.L = new LogicIns(parent,typeofsort);
     		parent.L.setVisible(true);
+    		
     	}
     	if(actioncommand == dataEngine.b_about_prog_txt)
     	{
