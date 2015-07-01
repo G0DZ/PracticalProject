@@ -49,7 +49,7 @@ public class Logic extends JFrame {
 	    tf_green.setBackground(Color.GREEN);
 	    tf_blue.setBackground(Color.CYAN);
 	    
-	    ta = new JTextArea("Пояснения\n", 450, 180);
+	    ta = new JTextArea("Пояснения\n", 450, 150);
 	    
 	    // Добавляем на панель
 		pl = new JPanel();
@@ -63,17 +63,41 @@ public class Logic extends JFrame {
 	    tf_yellow.setBounds(20,  177,  15,  15);
 	    tf_green.setBounds(20,  195,  15,  15);
 	    tf_blue.setBounds(20,  212,  15,  15);
-	    ta.setBounds(20, 237, 450, 180);
+	    ta.setBounds(20, 237, 450, 150);
 	    
 	    tf_red.setEnabled(false);
 	    tf_yellow.setEnabled(false);
 	    tf_green.setEnabled(false);
 	    tf_blue.setEnabled(false);
 	    
-	   /* DefaultCaret caret = (DefaultCaret) ta.getCaret(); 
-	    caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);       
-	    JScrollPane scrollPane = new JScrollPane(ta);
-	    scrollPane.setViewportView(ta);*/
+	    
+	    
+	    //... Set textarea's initial text, scrolling, and border.
+        //_resultArea.setText("Enter more text to see scrollbars");
+        JScrollPane scrollingArea = new JScrollPane(ta);
+
+        //... Get the content pane, set layout, add to center
+        JPanel content = new JPanel();
+        content.setLayout(new BorderLayout());
+        content.add(scrollingArea, BorderLayout.CENTER);
+        
+      //... Set window characteristics.
+        this.setContentPane(content);
+        this.setTitle("TextAreaDemo B");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.pack();
+        
+   
+        
+        
+	    
+	    //DefaultCaret caret = (DefaultCaret) ta.getCaret(); 
+	    //caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);       
+	    //JScrollPane scrollPane = new JScrollPane(ta);
+	    //ta.setCaret(caret);
+	    //scrollPane.setViewportView(ta);
+	    //JOptionPane.showMessageDialog(null, scrollPane);
+
 		
 		pl.add(label_general);
 		pl.add(label_legend);
